@@ -1,0 +1,639 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Romteca</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: an engineering drawing sheet. Isometric "exploded view" motif, mono callouts, a milestone axis that ends in Launch. */
+:root {
+  --bg: #EDF0F2;
+  --surface: #F8FAFB;
+  --fg: #101D2B;
+  --muted: #4A5968;
+  --line: #C3CCD5;
+  --accent: #2747D8;
+  --accent-ink: #FFFFFF;
+  --signal: #E39A1F;
+  --tint: #DCE3F8;
+  --display: 'Bricolage Grotesque', 'Segoe UI', Arial, sans-serif;
+  --body: 'Hanken Grotesk', 'Segoe UI', Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B1520; --surface: #111F2C; --fg: #E7EDF2; --muted: #9DAEBD; --line: #263646;
+    --accent: #8AA2FF; --accent-ink: #0B1520; --signal: #F0B04A; --tint: #17263B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B1520; --surface: #111F2C; --fg: #E7EDF2; --muted: #9DAEBD; --line: #263646;
+  --accent: #8AA2FF; --accent-ink: #0B1520; --signal: #F0B04A; --tint: #17263B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+  padding-inline: clamp(16px, 4vw, 40px);
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1160px; margin-inline: auto; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.025em; line-height: 1.08; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.mono { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+/* Header */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  margin-inline: calc(-1 * clamp(16px, 4vw, 40px));
+  padding-inline: clamp(16px, 4vw, 40px);
+  border-bottom: 1px solid var(--line);
+}
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 650; font-size: 22px; letter-spacing: -0.03em; }
+.logo svg { width: 26px; height: 26px; flex: none; }
+nav { display: flex; align-items: center; gap: 28px; }
+nav a.link { text-decoration: none; font-size: 15px; color: var(--muted); }
+nav a.link:hover { color: var(--fg); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font: 600 15px var(--body);
+  text-decoration: none; padding: 12px 20px; border-radius: 4px; border: 1px solid var(--accent);
+  background: var(--accent); color: var(--accent-ink); cursor: pointer;
+  transition: transform .15s ease, background .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--fg); }
+.btn.ghost:hover { background: var(--surface); }
+.btn.small { padding: 9px 16px; font-size: 14px; }
+@media (max-width: 760px) { nav a.link { display: none; } }
+
+/* Hero */
+.hero { padding-block: clamp(40px, 7vw, 88px) clamp(48px, 7vw, 96px); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.6rem); line-height: 1.0; letter-spacing: -0.035em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lede { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--muted); max-width: 52ch; margin-top: 24px; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero .eyebrow { margin-bottom: 22px; display: block; }
+.fig { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: clamp(8px, 2vw, 18px); }
+.fig svg { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+.audience { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.audience .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.audience div { padding: 20px 20px 20px 0; }
+.audience div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.audience b { display: block; font-family: var(--display); font-weight: 600; font-size: 18px; letter-spacing: -0.015em; margin-bottom: 2px; }
+.audience span { font-size: 14px; color: var(--muted); line-height: 1.4; display: block; }
+@media (max-width: 860px) {
+  .audience .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .audience div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .audience div:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+/* Sections */
+section.block { padding-block: clamp(56px, 9vw, 112px); }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.split > * { min-width: 0; }
+@media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.h2 { font-size: clamp(1.9rem, 3.8vw, 3rem); }
+.sub { color: var(--muted); max-width: 56ch; margin-top: 18px; }
+.tag { display: block; margin-bottom: 16px; }
+
+/* Services */
+.services-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: end; margin-bottom: clamp(32px, 5vw, 64px); }
+@media (max-width: 860px) { .services-head { grid-template-columns: minmax(0, 1fr); } }
+.svc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 72px); align-items: center; padding-block: clamp(28px, 4vw, 48px); border-top: 1px solid var(--line); }
+.svc > * { min-width: 0; }
+.svc.flip .svc-fig { order: -1; }
+@media (max-width: 860px) { .svc { grid-template-columns: minmax(0, 1fr); } .svc.flip .svc-fig { order: 0; } }
+.svc h3 { font-size: clamp(1.5rem, 2.6vw, 2.1rem); margin-top: 14px; }
+.svc p { color: var(--muted); margin-top: 14px; max-width: 50ch; }
+.svc .fit { margin-top: 18px; display: block; }
+.scope { display: inline-flex; align-items: center; gap: 10px; }
+.scope .dots { display: inline-flex; gap: 4px; }
+.scope i { width: 22px; height: 6px; border-radius: 1px; background: var(--line); display: block; }
+.scope i.on { background: var(--accent); }
+.svc-fig svg { display: block; width: 100%; height: auto; }
+
+/* Why */
+.why { background: var(--surface); border-block: 1px solid var(--line); margin-inline: calc(-1 * clamp(16px, 4vw, 40px)); padding-inline: clamp(16px, 4vw, 40px); }
+.points { display: grid; gap: 0; margin-top: 32px; }
+.points div { padding-block: 20px; border-top: 1px solid var(--line); }
+.points h3 { font-size: 1.25rem; letter-spacing: -0.015em; }
+.points p { color: var(--muted); margin-top: 6px; font-size: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chips span { font-family: var(--mono); font-size: 13px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 3px; background: var(--bg); }
+
+/* Process */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: clamp(32px, 5vw, 56px); position: relative; }
+.steps li { list-style: none; padding: 0 24px 0 0; position: relative; }
+.steps { padding: 0; margin-bottom: 0; }
+.steps li::before { content: ""; display: block; height: 1px; background: var(--fg); margin-bottom: 22px; }
+.steps li::after { content: ""; position: absolute; left: 0; top: -4px; width: 9px; height: 9px; background: var(--bg); border: 1.5px solid var(--fg); border-radius: 50%; }
+.steps li:last-child::after { background: var(--accent); border-color: var(--accent); width: 11px; height: 11px; top: -5px; }
+.steps h3 { font-size: 1.3rem; letter-spacing: -0.02em; margin-top: 8px; }
+.steps p { color: var(--muted); margin-top: 8px; font-size: 16px; }
+@media (max-width: 860px) {
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .steps li { padding-right: 0; }
+}
+
+/* Locations */
+.places { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 28px; }
+.places div { border-top: 1px solid var(--fg); padding-top: 14px; }
+.places b { font-family: var(--display); font-size: 1.2rem; font-weight: 600; letter-spacing: -0.015em; display: block; }
+.places span { color: var(--muted); font-size: 15px; display: block; margin-top: 4px; }
+
+/* Contact */
+.contact { background: var(--fg); color: var(--bg); margin-inline: calc(-1 * clamp(16px, 4vw, 40px)); padding-inline: clamp(16px, 4vw, 40px); }
+.contact .mono, .contact .sub { color: color-mix(in srgb, var(--bg) 70%, transparent); }
+.contact .h2 em { font-style: normal; color: var(--signal); }
+form { display: grid; gap: 16px; background: var(--bg); color: var(--fg); padding: clamp(20px, 3vw, 32px); border-radius: 6px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 560px) { .row2 { grid-template-columns: minmax(0, 1fr); } }
+label { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+input, select, textarea {
+  font: 400 16px var(--body); color: var(--fg); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 4px; padding: 11px 12px; width: 100%;
+}
+textarea { min-height: 110px; resize: vertical; }
+.brief { display: grid; gap: 12px; }
+.brief pre { margin: 0; white-space: pre-wrap; font: 400 14px/1.55 var(--mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px; overflow-wrap: anywhere; }
+.brief .addr { font-family: var(--mono); font-size: 14px; }
+.copy-note { font-size: 14px; color: var(--muted); }
+
+footer { padding-block: 40px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; color: var(--muted); font-size: 14px; }
+
+/* SVG styling */
+svg .t { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+svg .tb { font-family: var(--body); font-size: 12px; font-weight: 500; fill: var(--fg); }
+svg .tw { font-family: var(--body); font-size: 12px; font-weight: 600; fill: var(--accent-ink); }
+svg .ln { stroke: var(--fg); stroke-width: 1.4; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+svg .lf { stroke: var(--line); stroke-width: 1; fill: none; }
+svg .dash { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; fill: none; }
+svg .surf { fill: var(--surface); }
+svg .bgf { fill: var(--bg); }
+svg .acc { fill: var(--accent); }
+svg .accs { stroke: var(--accent); stroke-width: 1.5; fill: none; stroke-linejoin: round; }
+svg .sig { fill: var(--signal); }
+svg .dot { fill: var(--line); }
+svg .tint { fill: var(--tint); }
+@keyframes ping { 0% { r: 7; opacity: .7; } 100% { r: 20; opacity: 0; } }
+svg .ping { fill: none; stroke: var(--accent); stroke-width: 1.5; animation: ping 2.4s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  svg .ping { animation: none; opacity: .4; r: 14; }
+  .btn { transition: none; }
+}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Romteca home">
+      <svg viewBox="0 0 26 26" aria-hidden="true"><polygon points="13,2 24,8 13,14 2,8" fill="var(--accent)"/><polygon points="2,12 13,18 24,12 24,15 13,21 2,15" fill="none" stroke="var(--fg)" stroke-width="1.6" stroke-linejoin="round"/><polygon points="2,19 13,25 24,19" fill="none" stroke="var(--fg)" stroke-width="1.6" stroke-linejoin="round" opacity=".5"/></svg>
+      Romteca
+    </a>
+    <nav aria-label="Main">
+      <a class="link" href="#services">Services</a>
+      <a class="link" href="#why">Why Romteca</a>
+      <a class="link" href="#process">How we work</a>
+      <a class="link" href="#offices">Offices</a>
+      <a class="btn small" href="#contact">Talk to an engineer</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="mono eyebrow">Technical staffing &amp; engineering · Cluj-Napoca · Freudenstadt</span>
+        <h1>We help innovative R&amp;D companies <em>launch faster.</em></h1>
+        <p class="lede">Romteca puts specialist engineers and complete teams from South Eastern Europe into your R&amp;D. Your roadmap stops waiting on skills you cannot find, and your product reaches the market sooner.</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Start a project</a>
+          <a class="btn ghost" href="#services">See how we work with you</a>
+        </div>
+      </div>
+
+      <div class="fig">
+        <svg viewBox="0 0 520 440" role="img" aria-label="Exploded isometric view of a product with mechanics, electronics and software layers, above a milestone axis running from concept to launch">
+          <defs>
+            <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" class="dot"/></pattern>
+          </defs>
+          <rect width="520" height="440" fill="url(#dots)" opacity=".8"/>
+          <text class="t" x="20" y="28">FIG. 1 · EXPLODED VIEW</text>
+
+          <!-- base: software & cloud -->
+          <polygon class="surf ln" points="240,235 350,290 240,345 130,290"/>
+          <polygon class="surf ln" points="130,290 240,345 240,355 130,300"/>
+          <polygon class="surf ln" points="240,345 350,290 350,300 240,355"/>
+          <path class="ln" d="M180 275 L260 315 M210 260 L290 300 M150 290 L230 330"/>
+          <polygon class="sig" points="240,283 254,290 240,297 226,290"/>
+
+          <!-- connectors -->
+          <path class="dash" d="M130 100V190M350 100V190M130 200V290M350 200V290"/>
+
+          <!-- PCB: electronics -->
+          <polygon class="surf ln" points="240,135 350,190 240,245 130,190"/>
+          <polygon class="surf ln" points="130,190 240,245 240,255 130,200"/>
+          <polygon class="surf ln" points="240,245 350,190 350,200 240,255"/>
+          <path class="ln" d="M217 170 L240 179 M252 196 L268 205 M290 219 L318 205 M173 170 L150 182 M261 178 L240 167"/>
+          <polygon class="surf ln" points="195,159 217,170 195,181 173,170"/>
+          <polygon class="surf ln" points="290,197 312,208 290,219 268,208"/>
+          <polygon class="acc" points="240,179 262,190 240,201 218,190"/>
+          <polygon class="sig" points="275,171 289,178 275,185 261,178"/>
+
+          <!-- lid: mechanics -->
+          <polygon points="240,35 350,90 240,145 130,90" fill="var(--accent)" fill-opacity=".12" class="accs"/>
+          <polygon points="130,90 240,145 240,155 130,100" fill="var(--accent)" fill-opacity=".12" class="accs"/>
+          <polygon points="240,145 350,90 350,100 240,155" fill="var(--accent)" fill-opacity=".12" class="accs"/>
+          <polygon points="240,63 300,93 240,123 180,93" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 4"/>
+
+          <!-- callouts -->
+          <path class="ln" d="M350 90H368M350 190H368M350 290H368"/>
+          <circle class="acc" cx="350" cy="90" r="3"/><circle class="acc" cx="350" cy="190" r="3"/><circle class="acc" cx="350" cy="290" r="3"/>
+          <text class="tb" x="374" y="94">Mechanics</text>
+          <text class="tb" x="374" y="194">Electronics</text>
+          <text class="tb" x="374" y="294">Software &amp; cloud</text>
+
+          <!-- milestone axis -->
+          <path class="lf" d="M40 395H480"/>
+          <path class="ln" d="M60 395H450"/>
+          <circle class="bgf ln" cx="60" cy="395" r="4.5"/>
+          <circle class="bgf ln" cx="190" cy="395" r="4.5"/>
+          <circle class="bgf ln" cx="320" cy="395" r="4.5"/>
+          <circle class="ping" cx="450" cy="395" r="7"/>
+          <circle class="acc" cx="450" cy="395" r="7"/>
+          <path class="ln" d="M450 388V358"/>
+          <polygon class="acc" points="450,358 472,366 450,374"/>
+          <text class="t" x="60" y="422" text-anchor="middle">Concept</text>
+          <text class="t" x="190" y="422" text-anchor="middle">Prototype</text>
+          <text class="t" x="320" y="422" text-anchor="middle">Pilot</text>
+          <text class="t" x="450" y="422" text-anchor="middle" style="fill:var(--accent);font-weight:500">Launch</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="audience">
+    <div class="wrap">
+      <div><b>Startups</b><span>A strong idea, a small team, a date to hit</span></div>
+      <div><b>Research facilities</b><span>Turning lab results into working systems</span></div>
+      <div><b>Industrial R&amp;D</b><span>Departments with more roadmap than people</span></div>
+      <div><b>R&amp;D-heavy product firms</b><span>Where engineering sets the pace of the business</span></div>
+    </div>
+  </div>
+
+  <section class="block" id="problem">
+    <div class="wrap split">
+      <div>
+        <span class="mono tag">Where launches stall</span>
+        <h2 class="h2">The calendar is lost before the engineering starts.</h2>
+        <p class="sub">A niche role stays open for months. The interviews, the notice period and the first weeks of orientation all come out of the time you planned to spend building. We shorten that wait by bringing in engineers who have built comparable systems and can start on your problem straight away.</p>
+      </div>
+      <div class="fig">
+        <svg viewBox="0 0 480 230" role="img" aria-label="Schematic comparing a conventional hiring timeline with an embedded Romteca specialist, showing more time spent building">
+          <defs>
+            <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="var(--muted)" stroke-width="1.2"/></pattern>
+          </defs>
+          <text class="t" x="20" y="30">Typical search for a niche skill</text>
+          <rect x="20" y="42" width="310" height="36" fill="url(#hatch)" opacity=".55"/>
+          <rect class="ln" x="20" y="42" width="310" height="36"/>
+          <rect class="acc" x="330" y="42" width="110" height="36"/>
+          <text class="tb" x="30" y="64" style="fill:var(--fg)">Search · interviews · notice period</text>
+          <text class="tw" x="340" y="64">Building</text>
+
+          <text class="t" x="20" y="130">With a Romteca specialist or team</text>
+          <rect x="20" y="142" width="60" height="36" fill="url(#hatch)" opacity=".55"/>
+          <rect class="ln" x="20" y="142" width="60" height="36"/>
+          <rect class="acc" x="80" y="142" width="360" height="36"/>
+          <text class="tw" x="92" y="164">Building, from the first sprint</text>
+
+          <path class="ln" d="M440 40V196"/>
+          <polygon class="acc" points="440,196 462,203 440,210"/>
+          <text class="t" x="20" y="214">Schematic, not to scale · same launch date, more build time</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="services-head">
+        <div>
+          <span class="mono tag">Services</span>
+          <h2 class="h2">Four ways to bring us in, from one specialist to a whole company.</h2>
+        </div>
+        <p class="sub" style="margin-top:0">Most clients start small and widen the scope once the work has proven itself. The scope marker on each service shows how much of the project we carry.</p>
+      </div>
+
+      <article class="svc">
+        <div>
+          <span class="scope mono"><span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></span>Scope 1 of 4 · Embed</span>
+          <h3>Freelancers and teams for your projects</h3>
+          <p>Add a firmware lead, an RF designer or a complete squad to a running project. They work in your repositories, your tools and your sprints, and they leave documentation your own people can build on.</p>
+          <span class="mono fit">Fits: a gap in a project already under way</span>
+        </div>
+        <div class="svc-fig">
+          <svg viewBox="0 0 480 300" role="img" aria-label="Project lanes for firmware, RF design and cloud over four quarters, with Romteca specialists filling the gaps">
+            <g class="t"><text x="100" y="28">Q1</text><text x="215" y="28">Q2</text><text x="330" y="28">Q3</text><text x="445" y="28" text-anchor="end">Q4</text></g>
+            <path class="lf" d="M100 36V250M215 36V250M330 36V250M445 36V250"/>
+            <text class="t" x="0" y="79">Firmware</text><text class="t" x="0" y="149">RF design</text><text class="t" x="0" y="219">Cloud</text>
+            <!-- lane 1 -->
+            <rect class="surf ln" x="100" y="62" width="110" height="34" rx="3"/>
+            <rect class="acc" x="216" y="62" width="84" height="34" rx="3"/>
+            <rect class="surf ln" x="306" y="62" width="139" height="34" rx="3"/>
+            <!-- lane 2 -->
+            <rect class="surf ln" x="100" y="132" width="60" height="34" rx="3"/>
+            <rect class="acc" x="166" y="132" width="150" height="34" rx="3"/>
+            <rect class="surf ln" x="322" y="132" width="123" height="34" rx="3"/>
+            <!-- lane 3 -->
+            <rect class="surf ln" x="100" y="202" width="190" height="34" rx="3"/>
+            <rect class="acc" x="296" y="202" width="100" height="34" rx="3"/>
+            <rect class="surf ln" x="402" y="202" width="43" height="34" rx="3"/>
+            <text class="tw" x="228" y="83">+ 1 eng.</text>
+            <text class="tw" x="180" y="153">+ RF specialist</text>
+            <text class="tw" x="308" y="223">+ team</text>
+            <rect class="surf ln" x="100" y="272" width="14" height="14" rx="2"/><text class="t" x="122" y="283">Your team</text>
+            <rect class="acc" x="220" y="272" width="14" height="14" rx="2"/><text class="t" x="242" y="283">Romteca specialists</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="svc flip">
+        <div>
+          <span class="scope mono"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i></span>Scope 2 of 4 · Hand over</span>
+          <h3>We take over parts of your R&amp;D project</h3>
+          <p>Give us a module, a subsystem or a work package with clear interfaces. We own the design, build and verification, and report against the milestones you set.</p>
+          <span class="mono fit">Fits: a defined work package your team cannot staff</span>
+        </div>
+        <div class="svc-fig">
+          <svg viewBox="0 0 480 300" role="img" aria-label="System block diagram where the signal processing module is owned by Romteca and connects to four modules owned by the client">
+            <path class="ln" d="M140 65L175 140M340 65L305 140M140 255L175 180M340 255L305 180"/>
+            <circle class="acc" cx="140" cy="65" r="3"/><circle class="acc" cx="340" cy="65" r="3"/><circle class="acc" cx="140" cy="255" r="3"/><circle class="acc" cx="340" cy="255" r="3"/>
+            <rect class="surf ln" x="30" y="40" width="110" height="50" rx="3"/><text class="tb" x="85" y="70" text-anchor="middle">Sensor hardware</text>
+            <rect class="surf ln" x="340" y="40" width="110" height="50" rx="3"/><text class="tb" x="395" y="70" text-anchor="middle">Cloud backend</text>
+            <rect class="surf ln" x="30" y="230" width="110" height="50" rx="3"/><text class="tb" x="85" y="260" text-anchor="middle">Control software</text>
+            <rect class="surf ln" x="340" y="230" width="110" height="50" rx="3"/><text class="tb" x="395" y="260" text-anchor="middle">Certification</text>
+            <rect x="160" y="118" width="160" height="84" rx="4" fill="none" stroke="var(--signal)" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <rect class="acc" x="175" y="128" width="130" height="64" rx="3"/>
+            <text class="tw" x="240" y="165" text-anchor="middle">Signal processing</text>
+            <text class="t" x="240" y="110" text-anchor="middle" style="fill:var(--signal)">OWNED BY ROMTECA</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="svc">
+        <div>
+          <span class="scope mono"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>Scope 3 of 4 · Build</span>
+          <h3>We develop the whole product or MVP</h3>
+          <p>From specification to working pilot units. One accountable team covers hardware, firmware, software and test, so your people can concentrate on customers, certification and funding.</p>
+          <span class="mono fit">Fits: a product without an in-house team yet</span>
+        </div>
+        <div class="svc-fig">
+          <svg viewBox="0 0 480 320" role="img" aria-label="Four ascending steps from specification to MVP with a flag on the last step">
+            <text class="t" x="40" y="34">ONE TEAM, FROM SPEC TO HANDOVER</text>
+            <path class="lf" d="M20 270H460"/>
+            <rect class="surf ln" x="40" y="220" width="85" height="50"/>
+            <rect class="surf ln" x="135" y="170" width="85" height="100"/>
+            <rect class="surf ln" x="230" y="120" width="85" height="150"/>
+            <rect class="acc" x="325" y="70" width="85" height="200"/>
+            <path class="ln" d="M82 235H82M60 245H105M60 255H95"/>
+            <path class="ln" d="M155 190H200M155 202H190M155 214H205"/>
+            <rect class="sig" x="250" y="140" width="22" height="14" rx="2"/><rect class="sig" x="278" y="140" width="22" height="14" rx="2"/>
+            <path class="ln" d="M367 70V36"/>
+            <polygon class="sig" points="367,36 392,45 367,54"/>
+            <text class="t" x="82" y="292" text-anchor="middle">Spec</text>
+            <text class="t" x="177" y="292" text-anchor="middle">Prototype</text>
+            <text class="t" x="272" y="292" text-anchor="middle">Pilot units</text>
+            <text class="t" x="367" y="292" text-anchor="middle" style="fill:var(--accent);font-weight:500">MVP</text>
+          </svg>
+        </div>
+      </article>
+
+      <article class="svc flip">
+        <div>
+          <span class="scope mono"><span class="dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>Scope 4 of 4 · Launch</span>
+          <h3>Launchpad for startups</h3>
+          <p>For founders with strong technology and a thin organisation. Beyond engineering we bring capital, sales support and leadership experience, so the company grows around the product.</p>
+          <span class="mono fit">Fits: a young company that needs more than developers</span>
+        </div>
+        <div class="svc-fig">
+          <svg viewBox="0 0 480 320" role="img" aria-label="A product on a platform supported by three pillars labelled capital, sales and leadership, with a growth line rising beside it">
+            <path class="lf" d="M20 290H460"/>
+            <rect class="surf ln" x="40" y="190" width="400" height="14"/>
+            <rect class="surf ln" x="60" y="204" width="100" height="86"/>
+            <rect class="surf ln" x="190" y="204" width="100" height="86"/>
+            <rect class="surf ln" x="320" y="204" width="100" height="86"/>
+            <text class="tb" x="110" y="244" text-anchor="middle">Capital</text>
+            <text class="tb" x="240" y="244" text-anchor="middle">Sales</text>
+            <text class="tb" x="370" y="244" text-anchor="middle">Leadership</text>
+            <rect class="surf ln" x="90" y="108" width="84" height="82" rx="6"/>
+            <rect class="acc" x="102" y="120" width="60" height="34" rx="2"/>
+            <circle class="sig" cx="132" cy="172" r="5"/>
+            <path class="dash" d="M205 190V150"/>
+            <path class="lf" d="M230 60V190M230 60H440M230 110H440M230 160H440"/>
+            <polyline class="accs" style="stroke-width:2.5" points="240,176 290,160 330,168 380,112 428,76"/>
+            <circle class="acc" cx="428" cy="76" r="5"/>
+            <text class="t" x="240" y="50">TRACTION</text>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block why" id="why">
+    <div class="wrap split" style="align-items:start">
+      <div>
+        <span class="mono tag">Why Romteca</span>
+        <h2 class="h2">Specialists you will not find on a job board.</h2>
+        <div class="points">
+          <div>
+            <h3>Top freelancers and teams from South Eastern Europe</h3>
+            <p>We know the engineering communities of Romania and its neighbours first-hand, and we work with people whose track record we can check.</p>
+          </div>
+          <div>
+            <h3>Deep focus on hard-to-find skills</h3>
+            <p>We concentrate on disciplines where a standard job posting returns nothing, and we keep a network of specialists who have already shipped comparable products.</p>
+          </div>
+          <div>
+            <h3>Close to you</h3>
+            <p>Offices in Freudenstadt, Germany and Cluj-Napoca, Romania. You get a contact in your time zone, and our engineers are one hour ahead of Germany.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fig">
+          <svg viewBox="0 0 480 330" role="img" aria-label="Isometric stack of three capability layers: software, electronics and rare specialisms">
+            <text class="t" x="20" y="24">FIG. 2 · SKILL STACK</text>
+            <path class="dash" d="M150 88V170M330 88V170M150 178V260M330 178V260"/>
+            <polygon class="acc" points="240,220 330,260 240,300 150,260"/>
+            <polygon points="150,260 240,300 240,308 150,268" fill="var(--accent)" opacity=".6"/><polygon points="240,300 330,260 330,268 240,308" fill="var(--accent)" opacity=".6"/>
+            <polygon class="surf ln" points="240,130 330,170 240,210 150,170"/>
+            <polygon class="surf ln" points="150,170 240,210 240,218 150,178"/><polygon class="surf ln" points="240,210 330,170 330,178 240,218"/>
+            <polygon class="acc" points="240,160 258,170 240,180 222,170"/>
+            <polygon class="surf ln" points="240,40 330,80 240,120 150,80"/>
+            <polygon class="surf ln" points="150,80 240,120 240,128 150,88"/><polygon class="surf ln" points="240,120 330,80 330,88 240,128"/>
+            <path class="ln" d="M200 70L240 90L280 70M200 80L240 100L280 80"/>
+            <path class="ln" d="M330 80H352M330 170H352M330 260H352"/>
+            <circle class="acc" cx="330" cy="80" r="3"/><circle class="acc" cx="330" cy="170" r="3"/><circle class="acc" cx="330" cy="260" r="3"/>
+            <text class="tb" x="358" y="84">Software</text>
+            <text class="tb" x="358" y="174">Electronics</text>
+            <text class="tb" x="358" y="264">Rare specialisms</text>
+          </svg>
+        </div>
+        <span class="mono tag" style="margin-top:28px">Examples of what we staff</span>
+        <div class="chips">
+          <span>Embedded &amp; firmware</span><span>Power electronics</span><span>RF &amp; antennas</span>
+          <span>FPGA &amp; hardware design</span><span>Computer vision &amp; ML</span><span>Mechatronics</span>
+          <span>Robotics</span><span>IoT &amp; cloud backends</span><span>Test &amp; verification</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="process">
+    <div class="wrap">
+      <span class="mono tag">How we work</span>
+      <h2 class="h2" style="max-width:20ch">From first call to launch, in four moves.</h2>
+      <ol class="steps">
+        <li>
+          <span class="mono">Step 1</span>
+          <h3>Scope</h3>
+          <p>A technical call with an engineer. We map the skills, interfaces and milestones the project depends on.</p>
+        </li>
+        <li>
+          <span class="mono">Step 2</span>
+          <h3>Match</h3>
+          <p>We propose specialists or a full team who have solved comparable problems, with the reasoning behind each choice.</p>
+        </li>
+        <li>
+          <span class="mono">Step 3</span>
+          <h3>Embed</h3>
+          <p>The team joins your tools and cadence. Reporting, reviews and documentation follow your standards.</p>
+        </li>
+        <li>
+          <span class="mono">Step 4</span>
+          <h3>Ship</h3>
+          <p>We stay through launch and adjust the team size as the project moves from design to production.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="offices" style="padding-top:0">
+    <div class="wrap split">
+      <div>
+        <span class="mono tag">Offices</span>
+        <h2 class="h2">Two sites, one engineering team.</h2>
+        <p class="sub">Freudenstadt in the Black Forest region handles your contracts, your questions and your project reviews. Cluj-Napoca is home to the engineers who do the work with you.</p>
+        <div class="places">
+          <div><b>Freudenstadt</b><span>Germany · client contact, contracting and project reviews</span></div>
+          <div><b>Cluj-Napoca</b><span>Romania · engineering network and delivery</span></div>
+        </div>
+      </div>
+      <div class="fig">
+        <svg viewBox="0 0 520 260" role="img" aria-label="Map schematic with an arc between Freudenstadt, Germany and Cluj-Napoca, Romania, about 1,150 kilometres apart">
+          <path class="lf" d="M86 20V245M231 20V245M375 20V245M0 94H520M0 137H520M0 180H520"/>
+          <g class="t" style="font-size:9px"><text x="88" y="15">10°E</text><text x="233" y="15">15°E</text><text x="377" y="15">20°E</text><text x="6" y="91">49°N</text><text x="6" y="134">48°N</text><text x="6" y="177">47°N</text></g>
+          <path class="dash" d="M40 118Q260 20 480 190" style="stroke:var(--accent);stroke-width:1.5"/>
+          <circle class="ping" cx="40" cy="118" r="7"/><circle class="acc" cx="40" cy="118" r="7"/>
+          <circle class="acc" cx="480" cy="190" r="7"/>
+          <text class="tb" x="40" y="146" style="font-weight:600">Freudenstadt</text>
+          <text class="t" x="40" y="162">48.46° N 8.41° E</text>
+          <text class="tb" x="480" y="220" text-anchor="end" style="font-weight:600">Cluj-Napoca</text>
+          <text class="t" x="480" y="236" text-anchor="end">46.77° N 23.62° E</text>
+          <text class="t" x="262" y="66" text-anchor="middle" style="fill:var(--fg)">≈ 1,150 km · 1 h time difference</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap split" style="align-items:start">
+      <div>
+        <span class="mono tag">Start a project</span>
+        <h2 class="h2">Tell us what stands between you and <em>launch.</em></h2>
+        <p class="sub">Describe the product, the skills you are missing and your target date. An engineer from Romteca will reply with a first view of how we could help.</p>
+      </div>
+      <div>
+        <form id="brief-form" novalidate>
+          <div class="row2">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" placeholder="Your name"></div>
+            <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization" placeholder="Company or institute"></div>
+          </div>
+          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.com"></div>
+          <div class="field">
+            <label for="f-need">What do you need?</label>
+            <select id="f-need" name="need">
+              <option>Freelancers or a team for my project</option>
+              <option>Someone to take over part of an R&amp;D project</option>
+              <option>Full product or MVP development</option>
+              <option>Startup launchpad (capital, sales, leadership)</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-msg">Project and target date</label><textarea id="f-msg" name="msg" placeholder="What are you building, which skills are hard to find, and when do you need to launch?"></textarea></div>
+          <button class="btn" type="submit">Prepare my brief</button>
+          <div class="brief" id="brief" hidden>
+            <pre id="brief-text"></pre>
+            <div class="copy-note">Copy the brief and send it to <span class="addr">hello@romteca.com</span>. We read every message.</div>
+            <button class="btn ghost small" type="button" id="copy-btn" style="justify-self:start">Copy brief</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Romteca · Technical staffing &amp; engineering</span>
+    <span>Freudenstadt, Germany · Cluj-Napoca, Romania</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var form = document.getElementById('brief-form');
+  var box = document.getElementById('brief');
+  var out = document.getElementById('brief-text');
+  var copyBtn = document.getElementById('copy-btn');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) { return document.getElementById(id).value.trim() || '-'; };
+    out.textContent =
+      'Project brief for Romteca\n\n' +
+      'Name: ' + v('f-name') + '\n' +
+      'Company: ' + v('f-company') + '\n' +
+      'Email: ' + v('f-email') + '\n' +
+      'Need: ' + document.getElementById('f-need').value + '\n\n' +
+      v('f-msg');
+    box.hidden = false;
+    copyBtn.textContent = 'Copy brief';
+  });
+  copyBtn.addEventListener('click', function () {
+    var text = out.textContent;
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(out);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      copyBtn.textContent = 'Selected, press copy';
+    };
+    try {
+      navigator.clipboard.writeText(text).then(function () { copyBtn.textContent = 'Copied'; }, fallback);
+    } catch (err) { fallback(); }
+  });
+})();
+</script>
+
+</body></html>
