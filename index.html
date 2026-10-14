@@ -60,6 +60,12 @@ a { color: inherit; }
   border-bottom: 1px solid var(--line);
 }
 .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.bar nav { display: grid; grid-template-columns: auto auto; column-gap: 22px; row-gap: 10px; align-items: center; }
+.qrow { grid-column: 1 / -1; grid-row: 2; justify-self: start; display: flex; align-items: center; gap: 10px; }
+@media (max-width: 1100px) { .bar nav { column-gap: 12px; } .qrow { justify-self: end; } }
+.qtitle { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.qlabel { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: var(--accent); background: var(--tint); border: 1.5px solid var(--accent); border-radius: 3px; padding: 5px 10px; line-height: 1; transition: background .15s ease, color .15s ease; }
+.qlabel:hover, .qlabel[aria-current="page"] { background: var(--accent); color: var(--accent-ink); }
 .logo { display: inline-flex; align-items: center; text-decoration: none; }
 .logo svg { height: 34px; width: auto; flex: none; display: block; overflow: visible; }
 .logo text { font-family: var(--mono); font-weight: 800; font-size: 100px; letter-spacing: -2px; }
@@ -100,24 +106,6 @@ nav .links { display: flex; align-items: center; gap: 28px; }
   .bar.open nav .links { display: flex; }
   nav .links a.link { font-size: 17px; padding: 14px 0; border-top: 1px solid var(--line); color: var(--fg); }
   nav .links a.link:first-child { border-top: 0; }
-}
-.drop { position: relative; }
-.drop-btn { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; font: inherit; font-size: 15px; color: var(--muted); cursor: pointer; }
-.drop-btn svg { width: 10px; height: 6px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: transform .2s ease; }
-.drop-btn:hover, .drop.open .drop-btn, .drop:focus-within .drop-btn { color: var(--fg); }
-.drop.open .drop-btn svg { transform: rotate(180deg); }
-.drop-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); min-width: 160px; padding: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 12px 30px -18px rgba(16, 29, 43, .45); z-index: 20; }
-.drop-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
-.drop:hover .drop-menu, .drop.open .drop-menu { display: block; }
-nav .drop-menu a.link { display: block; padding: 9px 12px; border-radius: 4px; }
-nav .drop-menu a.link:hover { background: var(--tint); color: var(--fg); }
-@media (max-width: 1100px) {
-  .drop { border-top: 1px solid var(--line); padding-top: 14px; }
-  .drop-btn { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; pointer-events: none; }
-  .drop-btn svg { display: none; }
-  .drop-menu { display: block; position: static; transform: none; min-width: 0; padding: 4px 0 0 14px; background: none; border: 0; box-shadow: none; }
-  .drop-menu::before { display: none; }
-  nav .drop-menu a.link { padding: 10px 0; border-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .menu-btn span { transition: none; } }
 @media (max-width: 760px) { .btn.small { padding: 8px 12px; } }
@@ -362,7 +350,7 @@ svg .ping { fill: none; stroke: var(--accent); stroke-width: 1.5; animation: pin
 .logo-tag { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); border: 1.5px solid var(--accent); border-radius: 3px; padding: 4px 9px; line-height: 1; white-space: nowrap; }
 .logo-tag[hidden] { display: none; }
 nav a.link[aria-current="page"] { color: var(--fg); }
-[id^="sap-"] { scroll-margin-top: 84px; }
+[id^="sap-"] { scroll-margin-top: 124px; }
 #page-sap .chips span.k { color: var(--accent); border-color: var(--accent); }
 #page-sap .sap-legal { color: var(--muted); font-size: 13px; padding-bottom: 48px; }
 
@@ -461,15 +449,13 @@ nav a.link[aria-current="page"] { color: var(--fg); }
         <a class="link" href="#proof">Case Studies</a>
         <a class="link" href="#about">About</a>
         <a class="link" href="#offices">Offices</a>
-        <div class="drop" id="quick">
-          <button type="button" class="drop-btn" aria-expanded="false" aria-controls="quick-menu">Quick links<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
-          <div class="drop-menu" id="quick-menu">
-            <a class="link" id="nav-sap" href="#sap">SAP</a>
-          </div>
-        </div>
       </div>
       <a class="btn small" id="hdr-cta" href="#contact">Talk to an engineer</a>
       <button type="button" class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+      <div class="qrow">
+        <span class="qtitle">Quick links</span>
+        <a class="qlabel" id="nav-sap" href="#sap">SAP</a>
+      </div>
     </nav>
   </div>
 </header>
@@ -1194,17 +1180,6 @@ nav a.link[aria-current="page"] { color: var(--fg); }
     f.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'));
     cards.forEach(c => { c.hidden = btn.dataset.f !== 'all' && c.dataset.cat !== btn.dataset.f; });
   });
-})();
-</script>
-<script>
-(function () {
-  var d = document.getElementById('quick'); if (!d) return;
-  var b = d.querySelector('.drop-btn');
-  function set(o) { d.classList.toggle('open', o); b.setAttribute('aria-expanded', String(o)); }
-  b.addEventListener('click', function (e) { e.stopPropagation(); set(!d.classList.contains('open')); });
-  d.querySelector('.drop-menu').addEventListener('click', function () { set(false); });
-  document.addEventListener('click', function (e) { if (!d.contains(e.target)) set(false); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
 </body>
