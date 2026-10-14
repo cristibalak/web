@@ -100,6 +100,24 @@ nav .links { display: flex; align-items: center; gap: 28px; }
   nav .links a.link { font-size: 17px; padding: 14px 0; border-top: 1px solid var(--line); color: var(--fg); }
   nav .links a.link:first-child { border-top: 0; }
 }
+.drop { position: relative; }
+.drop-btn { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: none; font: inherit; font-size: 15px; color: var(--muted); cursor: pointer; }
+.drop-btn svg { width: 10px; height: 6px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: transform .2s ease; }
+.drop-btn:hover, .drop.open .drop-btn, .drop:focus-within .drop-btn { color: var(--fg); }
+.drop.open .drop-btn svg { transform: rotate(180deg); }
+.drop-menu { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); min-width: 160px; padding: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 12px 30px -18px rgba(16, 29, 43, .45); z-index: 20; }
+.drop-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+.drop:hover .drop-menu, .drop.open .drop-menu { display: block; }
+nav .drop-menu a.link { display: block; padding: 9px 12px; border-radius: 4px; }
+nav .drop-menu a.link:hover { background: var(--tint); color: var(--fg); }
+@media (max-width: 1100px) {
+  .drop { border-top: 1px solid var(--line); padding-top: 14px; }
+  .drop-btn { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; pointer-events: none; }
+  .drop-btn svg { display: none; }
+  .drop-menu { display: block; position: static; transform: none; min-width: 0; padding: 4px 0 0 14px; background: none; border: 0; box-shadow: none; }
+  .drop-menu::before { display: none; }
+  nav .drop-menu a.link { padding: 10px 0; border-top: 0; }
+}
 @media (prefers-reduced-motion: reduce) { .menu-btn span { transition: none; } }
 @media (max-width: 760px) { .btn.small { padding: 8px 12px; } }
 
@@ -126,19 +144,20 @@ nav .links { display: flex; align-items: center; gap: 28px; }
 @media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
 
 .scale { margin-top: clamp(32px, 5vw, 56px); position: relative; }
-.scale-track { position: relative; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--tint), var(--accent)); margin: 0 0 0; }
-.scale-track i { position: absolute; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; background: var(--accent); border: 4px solid var(--bg); box-shadow: 0 0 0 1px var(--accent); }
-.scale-track i:nth-child(1) { left: calc(100% / 6); width: 18px; height: 18px; background: color-mix(in srgb, var(--accent) 45%, var(--tint)); }
-.scale-track i:nth-child(2) { left: 50%; width: 26px; height: 26px; background: color-mix(in srgb, var(--accent) 75%, var(--tint)); }
-.scale-track i:nth-child(3) { left: calc(500% / 6); width: 34px; height: 34px; }
+.scale-track { position: relative; height: 6px; border-radius: 3px; background: linear-gradient(in oklch 90deg, var(--signal), var(--accent)); margin: 0 0 0; }
+.scale-track i { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 26px; height: 26px; border-radius: 50%; background: var(--c); border: 4px solid var(--bg); box-shadow: 0 0 0 1px var(--c); }
+.scale-track i:nth-child(1) { left: calc(100% / 6); --c: color-mix(in oklch, var(--accent) 17%, var(--signal)); }
+.scale-track i:nth-child(2) { left: 50%; --c: color-mix(in oklch, var(--accent) 50%, var(--signal)); }
+.scale-track i:nth-child(3) { left: calc(500% / 6); --c: color-mix(in oklch, var(--accent) 83%, var(--signal)); }
 .scale-stops { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 4vw, 56px); }
-.scale-stops li { min-width: 0; display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; text-align: center; }
+.scale-stops li { min-width: 0; display: flex; flex-direction: column; gap: 8px; text-align: center; }
+.scale-stops .pv2-fit { margin-top: auto; }
 .scale-stops h3 { font-size: 1.3rem; letter-spacing: -0.015em; }
 .scale-stops p { color: var(--muted); font-size: 16px; }
 .scale-stops .pv2-fit { justify-content: center; gap: 10px; }
 @media (max-width: 760px) {
   .scale { padding-left: 44px; }
-  .scale-track { position: absolute; left: 14px; top: 0; bottom: 0; width: 6px; height: auto; background: linear-gradient(180deg, var(--tint), var(--accent)); }
+  .scale-track { position: absolute; left: 14px; top: 0; bottom: 0; width: 6px; height: auto; background: linear-gradient(in oklch 180deg, var(--signal), var(--accent)); }
   .scale-track i { left: 50% !important; }
   .scale-track i:nth-child(1) { top: 8%; } .scale-track i:nth-child(2) { top: 45%; } .scale-track i:nth-child(3) { top: 82%; }
   .scale-stops { grid-template-columns: minmax(0, 1fr); margin-top: 0; gap: 36px; }
@@ -435,7 +454,12 @@ nav a.link[aria-current="page"] { color: var(--fg); }
         <a class="link" href="#proof">Case Studies</a>
         <a class="link" href="#about">About</a>
         <a class="link" href="#offices">Offices</a>
-        <a class="link" id="nav-sap" href="#sap">SAP</a>
+        <div class="drop" id="quick">
+          <button type="button" class="drop-btn" aria-expanded="false" aria-controls="quick-menu">Quick links<svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></button>
+          <div class="drop-menu" id="quick-menu">
+            <a class="link" id="nav-sap" href="#sap">SAP</a>
+          </div>
+        </div>
       </div>
       <a class="btn small" id="hdr-cta" href="#contact">Talk to an engineer</a>
       <button type="button" class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
@@ -511,9 +535,9 @@ nav a.link[aria-current="page"] { color: var(--fg); }
       <div class="scale">
         <div class="scale-track" aria-hidden="true"><i></i><i></i><i></i></div>
         <ol class="scale-stops">
-          <li><span class="mono">A product idea and a date</span><h3>Startups and research labs</h3><p>We bring the engineers and the experience to get from first concept to a working product.</p><a class="pv2-fit" href="#services"><span>Often starts with</span><b>Build</b></a></li>
-          <li><span class="mono">More ideas than capacity</span><h3>Mid-sized product companies</h3><p>We add the R&amp;D force for the next product while your own team keeps the current one running.</p><a class="pv2-fit" href="#services"><span>Often starts with</span><b>Hand over</b></a></li>
-          <li><span class="mono">A roadmap bigger than the team</span><h3>Corporate &amp; industrial R&amp;D</h3><p>We cover specialist gaps and peaks in workload, so projects do not wait for a hiring cycle.</p><a class="pv2-fit" href="#services"><span>Often starts with</span><b>Embed</b></a></li>
+          <li><h3>Startups and research labs</h3><p>We bring the engineers and the experience to get from first concept to a working product.</p><a class="pv2-fit" href="#services"><span>Often starts with</span><b>Build</b></a></li>
+          <li><h3>Mid-sized product companies</h3><p>We add the R&amp;D force for the next product while your own team keeps the current one running.</p><a class="pv2-fit" href="#services"><span>Often starts with</span><b>Hand over</b></a></li>
+          <li><h3>Corporate &amp; industrial R&amp;D</h3><p>We cover specialist gaps and peaks in workload, so projects do not wait for a hiring cycle.</p><a class="pv2-fit" href="#services"><span>Often starts with</span><b>Embed</b></a></li>
         </ol>
       </div>
     </div>
@@ -553,7 +577,7 @@ nav a.link[aria-current="page"] { color: var(--fg); }
       <div>
         <span class="mono tag">Hard-to-find skills</span>
         <h2 class="feature-h">Specialists you will not find <em class="block">on any job board.</em></h2>
-        <p class="lede">We focus on disciplines where a job posting returns nothing, from AI and data platforms to embedded hardware. The best engineers rarely post a CV: they find projects through referrals and local networks, and we know when they become available.</p>
+        <p class="lede">The best engineers rarely post a CV: they find projects through referrals and local networks, and we know when they become available.</p>
         <div class="cta"><a class="btn ghost" href="#proof">See their projects</a></div>
       </div>
       <div class="fig">
@@ -576,9 +600,10 @@ nav a.link[aria-current="page"] { color: var(--fg); }
       <span class="mono tag">Skills our teams cover</span>
       <div class="skill-groups">
         <div class="skill-group"><div class="skill-head"><span>Software</span></div><div class="chips"><span>Software &amp; AI engineering</span><span>ML engineering &amp; MLOps</span><span>Data engineering</span><span>DevOps &amp; security</span></div></div>
-        <div class="skill-group"><div class="skill-head"><span>Embedded</span></div><div class="chips"><span>Embedded &amp; firmware</span><span>Edge AI on hardware</span><span>IoT backends</span><span>Test &amp; verification</span></div></div>
+        <div class="skill-group"><div class="skill-head"><span>Enterprise</span></div><div class="chips"><span>SAP</span><span>Oracle</span><span>Salesforce</span><span>Microsoft</span></div></div>
+        <div class="skill-group"><div class="skill-head"><span>Embedded</span></div><div class="chips"><span>Embedded &amp; firmware</span><span>Edge AI on hardware</span><span>IoT</span><span>Test &amp; verification</span></div></div>
         <div class="skill-group"><div class="skill-head"><span>Electronics</span></div><div class="chips"><span>Power electronics</span><span>RF &amp; antennas</span><span>FPGA &amp; hardware design</span></div></div>
-        <div class="skill-group"><div class="skill-head"><span>Mechanics</span></div><div class="chips"><span>Mechatronics</span><span>Robotics</span><span>Enclosure &amp; packaging design</span></div></div>
+        <div class="skill-group"><div class="skill-head"><span>Mechanics</span></div><div class="chips"><span>CAD</span><span>Mechatronics</span><span>Robotics</span><span>Enclosure &amp; packaging design</span></div></div>
       </div>
     </div>
   </section>
@@ -632,14 +657,14 @@ nav a.link[aria-current="page"] { color: var(--fg); }
           <span class="case-cat">Software &amp; AI</span>
           <span class="mono">Cybersecurity · DevOps</span>
           <h3>DevOps for a cybersecurity firm</h3>
-          <p>Our team worked on DevOps for a cybersecurity firm based in the UAE.</p>
+          <p>Our team worked on DevOps for a company developing a suite of cybersecurity products, based in the UAE.</p>
           <div class="case-part"><span>Our part</span><b>DevOps</b></div>
         </article>
         <article class="card real" data-cat="cd">
           <span class="case-cat">Connected devices</span>
           <span class="mono">Battery systems</span>
-          <h3>Battery management system for a tier 1 supplier</h3>
-          <p>Our team of 5 engineers helped remodel the battery management system of a tier 1 supplier in Germany.</p>
+          <h3>Battery management system</h3>
+          <p>Our team of 5 embedded engineers helped remodel the battery management system for an automotive OEM in Germany.</p>
           <div class="case-part"><span>Our part</span><b>5-engineer team</b></div>
         </article>
         <article class="card real" data-cat="cd">
@@ -1175,6 +1200,17 @@ nav a.link[aria-current="page"] { color: var(--fg); }
     f.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === btn ? 'true' : 'false'));
     cards.forEach(c => { c.hidden = btn.dataset.f !== 'all' && c.dataset.cat !== btn.dataset.f; });
   });
+})();
+</script>
+<script>
+(function () {
+  var d = document.getElementById('quick'); if (!d) return;
+  var b = d.querySelector('.drop-btn');
+  function set(o) { d.classList.toggle('open', o); b.setAttribute('aria-expanded', String(o)); }
+  b.addEventListener('click', function (e) { e.stopPropagation(); set(!d.classList.contains('open')); });
+  d.querySelector('.drop-menu').addEventListener('click', function () { set(false); });
+  document.addEventListener('click', function (e) { if (!d.contains(e.target)) set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
 </body>
