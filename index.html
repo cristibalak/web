@@ -131,8 +131,7 @@ nav .links { display: flex; align-items: center; gap: 28px; }
 .scale-track i:nth-child(1) { left: calc(100% / 6); width: 18px; height: 18px; background: color-mix(in srgb, var(--accent) 45%, var(--tint)); }
 .scale-track i:nth-child(2) { left: 50%; width: 26px; height: 26px; background: color-mix(in srgb, var(--accent) 75%, var(--tint)); }
 .scale-track i:nth-child(3) { left: calc(500% / 6); width: 34px; height: 34px; }
-.scale-axis { display: flex; justify-content: space-between; margin-top: 14px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.scale-stops { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 4vw, 56px); }
+.scale-stops { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 4vw, 56px); }
 .scale-stops li { min-width: 0; display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; text-align: center; }
 .scale-stops h3 { font-size: 1.3rem; letter-spacing: -0.015em; }
 .scale-stops p { color: var(--muted); font-size: 16px; }
@@ -142,10 +141,21 @@ nav .links { display: flex; align-items: center; gap: 28px; }
   .scale-track { position: absolute; left: 14px; top: 0; bottom: 0; width: 6px; height: auto; background: linear-gradient(180deg, var(--tint), var(--accent)); }
   .scale-track i { left: 50% !important; }
   .scale-track i:nth-child(1) { top: 8%; } .scale-track i:nth-child(2) { top: 45%; } .scale-track i:nth-child(3) { top: 82%; }
-  .scale-axis { display: none; }
   .scale-stops { grid-template-columns: minmax(0, 1fr); margin-top: 0; gap: 36px; }
   .scale-stops li { text-align: left; } .scale-stops .pv2-fit { justify-content: space-between; }
 }
+.feature .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.feature.flip .fig { order: -1; }
+.feature-h { font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: 1.02; letter-spacing: -0.035em; }
+.feature-h em { font-style: normal; color: var(--accent); }
+.feature-h em.block { display: block; }
+.feature .lede { font-size: clamp(1.05rem, 1.5vw, 1.2rem); color: var(--muted); max-width: 50ch; margin-top: 22px; }
+.feature .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+@media (max-width: 900px) { .feature .wrap { grid-template-columns: minmax(0, 1fr); } .feature.flip .fig { order: 0; } }
+.band { background: var(--surface); margin-inline: calc(-1 * clamp(16px, 4vw, 40px)); padding-inline: clamp(16px, 4vw, 40px); }
+.band-top { border-top: 1px solid var(--line); }
+.band-bottom { border-bottom: 1px solid var(--line); padding-top: 0; }
+.band .fig { background: var(--bg); }
 .partners-head { max-width: 640px; }
 .pv2-fit { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 8px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
 .pv2-fit b { color: var(--accent); font-weight: 700; }
@@ -247,22 +257,13 @@ section.block { padding-block: clamp(56px, 9vw, 112px); }
 .h2 em.alt { font-style: normal; background: var(--accent); color: var(--accent-ink); padding: 0.02em 0.2em 0.06em; border-radius: 3px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 
 .why { background: var(--surface); border-block: 1px solid var(--line); margin-inline: calc(-1 * clamp(16px, 4vw, 40px)); padding-inline: clamp(16px, 4vw, 40px); }
-#why .why-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: clamp(28px, 4vw, 44px); }
-#why .why-card { min-width: 0; padding: 24px; background: var(--bg); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 6px; transition: transform .2s ease, box-shadow .2s ease; }
-#why .why-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px -16px color-mix(in srgb, var(--accent) 45%, transparent); }
-#why .why-n { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 4px; background: var(--tint); color: var(--accent); font: 700 13px var(--mono); letter-spacing: .04em; }
-#why .why-card h3 { font-size: 1.25rem; letter-spacing: -0.015em; margin-top: 16px; }
-#why .why-card p { color: var(--muted); margin-top: 8px; font-size: 15.5px; }
-#why .why-skills-tag { margin-top: clamp(44px, 6vw, 72px); }
-#why .skill-groups { border-bottom: 1px solid var(--line); }
-#why .skill-group { display: grid; grid-template-columns: minmax(180px, 3fr) minmax(0, 9fr); gap: clamp(16px, 3vw, 40px); align-items: center; padding-block: 18px; border-top: 1px solid var(--line); }
-#why .skill-head { display: flex; justify-content: flex-start; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
-#why .chips { margin-top: 0; gap: 6px; }
-#why .chips span { background: var(--tint); border-color: transparent; color: var(--fg); font-size: 12.5px; padding: 6px 10px; transition: background .15s ease, color .15s ease; }
-#why .chips span:hover { background: var(--accent); color: var(--accent-ink); }
-@media (max-width: 860px) { #why .why-cols { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 640px) { #why .skill-group { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
-@media (prefers-reduced-motion: reduce) { #why .why-card { transition: none; } #why .why-card:hover { transform: none; } }
+#skills .skill-groups { border-bottom: 1px solid var(--line); }
+#skills .skill-group { display: grid; grid-template-columns: minmax(180px, 3fr) minmax(0, 9fr); gap: clamp(16px, 3vw, 40px); align-items: center; padding-block: 18px; border-top: 1px solid var(--line); }
+#skills .skill-head { display: flex; justify-content: flex-start; align-items: center; gap: 10px; font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+#skills .chips { margin-top: 0; gap: 6px; }
+#skills .chips span { background: var(--tint); border-color: transparent; color: var(--fg); font-size: 12.5px; padding: 6px 10px; transition: background .15s ease, color .15s ease; }
+#skills .chips span:hover { background: var(--accent); color: var(--accent-ink); }
+@media (max-width: 640px) { #skills .skill-group { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .chips span { font-family: var(--mono); font-size: 13px; padding: 7px 12px; border: 1px solid var(--line); border-radius: 3px; background: var(--bg); }
 
@@ -430,8 +431,8 @@ nav a.link[aria-current="page"] { color: var(--fg); }
     <nav aria-label="Main">
       <div class="links" id="menu">
         <a class="link" href="#services">Services</a>
+        <a class="link" href="#specialists">Why Romteca</a>
         <a class="link" href="#proof">Case Studies</a>
-        <a class="link" href="#why">Why Romteca</a>
         <a class="link" href="#about">About</a>
         <a class="link" href="#offices">Offices</a>
         <a class="link" id="nav-sap" href="#sap">SAP</a>
@@ -509,7 +510,6 @@ nav a.link[aria-current="page"] { color: var(--fg); }
       </div>
       <div class="scale">
         <div class="scale-track" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="scale-axis" aria-hidden="true"><span>Smaller team</span><span>Larger organisation</span></div>
         <ol class="scale-stops">
           <li><span class="mono">A product idea and a date</span><h3>Startups and research labs</h3><p>We bring the engineers and the experience to get from first concept to a working product.</p><a class="pv2-fit" href="#services"><span>Often starts with</span><b>Build</b></a></li>
           <li><span class="mono">More ideas than capacity</span><h3>Mid-sized product companies</h3><p>We add the R&amp;D force for the next product while your own team keeps the current one running.</p><a class="pv2-fit" href="#services"><span>Often starts with</span><b>Hand over</b></a></li>
@@ -545,6 +545,41 @@ nav a.link[aria-current="page"] { color: var(--fg); }
         </div>
       </div>
       <div class="prog-axis" aria-hidden="true"><span>Your team does more</span><span>Our team does more</span></div>
+    </div>
+  </section>
+
+  <section class="block feature flip band band-top" id="specialists">
+    <div class="wrap">
+      <div>
+        <span class="mono tag">Hard-to-find skills</span>
+        <h2 class="feature-h">Specialists you will not find <em class="block">on any job board.</em></h2>
+        <p class="lede">We focus on disciplines where a job posting returns nothing, from AI and data platforms to embedded hardware. The best engineers rarely post a CV: they find projects through referrals and local networks, and we know when they become available.</p>
+        <div class="cta"><a class="btn ghost" href="#proof">See their projects</a></div>
+      </div>
+      <div class="fig">
+          <svg viewBox="0 0 520 400" role="img" aria-label="Only a few specialists are visible on job boards, while many more are reachable through referrals and local networks, some of them available now">
+            <text class="t" x="16" y="24">FIG. 2 · WHERE THE SPECIALISTS ARE</text>
+            <text class="t" x="16" y="62">VISIBLE ON JOB BOARDS</text>
+            <circle class="nodeD" cx="150" cy="96" r="9"/><circle class="nodeD" cx="230" cy="96" r="9"/><circle class="nodeD" cx="310" cy="96" r="9"/><circle class="nodeD" cx="390" cy="96" r="9"/>
+            <path class="dash" d="M16 140H504"/>
+            <text class="t" x="16" y="176">REACHABLE THROUGH REFERRALS &amp; LOCAL NETWORKS</text>
+            <circle class="acc" cx="38" cy="214" r="6"/><circle class="acc" cx="67" cy="214" r="6"/><circle class="acc" cx="96" cy="214" r="6"/><circle class="acc" cx="125" cy="214" r="6"/><circle class="acc" cx="154" cy="214" r="6"/><circle class="acc" cx="183" cy="214" r="6"/><circle class="acc" cx="212" cy="214" r="6"/><circle class="acc" cx="241" cy="214" r="6"/><circle class="acc" cx="270" cy="214" r="6"/><circle class="acc" cx="299" cy="214" r="6"/><circle class="acc" cx="328" cy="214" r="6"/><circle class="acc" cx="357" cy="214" r="6"/><circle class="acc" cx="386" cy="214" r="6"/><circle class="acc" cx="415" cy="214" r="6"/><circle class="acc" cx="444" cy="214" r="6"/><circle class="acc" cx="473" cy="214" r="6"/><circle class="acc" cx="38" cy="242" r="6"/><circle class="acc" cx="67" cy="242" r="6"/><circle class="acc" cx="96" cy="242" r="6"/><circle class="acc" cx="125" cy="242" r="6"/><circle class="acc" cx="154" cy="242" r="6"/><circle class="acc" cx="183" cy="242" r="6"/><circle class="acc" cx="212" cy="242" r="6"/><circle class="acc" cx="241" cy="242" r="6"/><circle class="acc" cx="270" cy="242" r="6"/><circle class="acc" cx="299" cy="242" r="6"/><circle class="acc" cx="328" cy="242" r="6"/><circle class="acc" cx="357" cy="242" r="6"/><circle class="acc" cx="386" cy="242" r="6"/><circle class="acc" cx="415" cy="242" r="6"/><circle class="sig" cx="444" cy="242" r="7"/><circle class="acc" cx="473" cy="242" r="6"/><circle class="acc" cx="38" cy="270" r="6"/><circle class="acc" cx="67" cy="270" r="6"/><circle class="acc" cx="96" cy="270" r="6"/><circle class="sig" cx="125" cy="270" r="7"/><circle class="acc" cx="154" cy="270" r="6"/><circle class="acc" cx="183" cy="270" r="6"/><circle class="acc" cx="212" cy="270" r="6"/><circle class="acc" cx="241" cy="270" r="6"/><circle class="acc" cx="270" cy="270" r="6"/><circle class="acc" cx="299" cy="270" r="6"/><circle class="acc" cx="328" cy="270" r="6"/><circle class="acc" cx="357" cy="270" r="6"/><circle class="acc" cx="386" cy="270" r="6"/><circle class="acc" cx="415" cy="270" r="6"/><circle class="acc" cx="444" cy="270" r="6"/><circle class="acc" cx="473" cy="270" r="6"/><circle class="acc" cx="38" cy="298" r="6"/><circle class="acc" cx="67" cy="298" r="6"/><circle class="acc" cx="96" cy="298" r="6"/><circle class="acc" cx="125" cy="298" r="6"/><circle class="acc" cx="154" cy="298" r="6"/><circle class="acc" cx="183" cy="298" r="6"/><circle class="acc" cx="212" cy="298" r="6"/><circle class="acc" cx="241" cy="298" r="6"/><circle class="sig" cx="270" cy="298" r="7"/><circle class="acc" cx="299" cy="298" r="6"/><circle class="acc" cx="328" cy="298" r="6"/><circle class="acc" cx="357" cy="298" r="6"/><circle class="acc" cx="386" cy="298" r="6"/><circle class="acc" cx="415" cy="298" r="6"/><circle class="acc" cx="444" cy="298" r="6"/><circle class="acc" cx="473" cy="298" r="6"/><circle class="acc" cx="38" cy="326" r="6"/><circle class="acc" cx="67" cy="326" r="6"/><circle class="acc" cx="96" cy="326" r="6"/><circle class="acc" cx="125" cy="326" r="6"/><circle class="acc" cx="154" cy="326" r="6"/><circle class="acc" cx="183" cy="326" r="6"/><circle class="acc" cx="212" cy="326" r="6"/><circle class="acc" cx="241" cy="326" r="6"/><circle class="acc" cx="270" cy="326" r="6"/><circle class="acc" cx="299" cy="326" r="6"/><circle class="acc" cx="328" cy="326" r="6"/><circle class="sig" cx="357" cy="326" r="7"/><circle class="acc" cx="386" cy="326" r="6"/><circle class="acc" cx="415" cy="326" r="6"/><circle class="acc" cx="444" cy="326" r="6"/><circle class="acc" cx="473" cy="326" r="6"/><circle class="acc" cx="38" cy="354" r="6"/><circle class="acc" cx="67" cy="354" r="6"/><circle class="acc" cx="96" cy="354" r="6"/><circle class="acc" cx="125" cy="354" r="6"/><circle class="acc" cx="154" cy="354" r="6"/><circle class="acc" cx="183" cy="354" r="6"/><circle class="sig" cx="212" cy="354" r="7"/><circle class="acc" cx="241" cy="354" r="6"/><circle class="acc" cx="270" cy="354" r="6"/><circle class="acc" cx="299" cy="354" r="6"/><circle class="acc" cx="328" cy="354" r="6"/><circle class="acc" cx="357" cy="354" r="6"/><circle class="acc" cx="386" cy="354" r="6"/><circle class="acc" cx="415" cy="354" r="6"/><circle class="acc" cx="444" cy="354" r="6"/><circle class="acc" cx="473" cy="354" r="6"/>
+            <circle class="sig" cx="22" cy="384" r="5"/><text class="t" x="34" y="388">AVAILABLE NOW</text>
+            <circle class="acc" cx="150" cy="384" r="5"/><text class="t" x="162" y="388">IN OUR NETWORK</text>
+          </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="block skills band band-bottom" id="skills">
+    <div class="wrap">
+      <span class="mono tag">Skills our teams cover</span>
+      <div class="skill-groups">
+        <div class="skill-group"><div class="skill-head"><span>Software</span></div><div class="chips"><span>Software &amp; AI engineering</span><span>ML engineering &amp; MLOps</span><span>Data engineering</span><span>DevOps &amp; security</span></div></div>
+        <div class="skill-group"><div class="skill-head"><span>Embedded</span></div><div class="chips"><span>Embedded &amp; firmware</span><span>Edge AI on hardware</span><span>IoT backends</span><span>Test &amp; verification</span></div></div>
+        <div class="skill-group"><div class="skill-head"><span>Electronics</span></div><div class="chips"><span>Power electronics</span><span>RF &amp; antennas</span><span>FPGA &amp; hardware design</span></div></div>
+        <div class="skill-group"><div class="skill-head"><span>Mechanics</span></div><div class="chips"><span>Mechatronics</span><span>Robotics</span><span>Enclosure &amp; packaging design</span></div></div>
+      </div>
     </div>
   </section>
 
@@ -641,25 +676,6 @@ nav a.link[aria-current="page"] { color: var(--fg); }
           <p>Tell us what you are building and which skills you are missing.</p>
           <b>Tell us about it</b>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="block why" id="why">
-    <div class="wrap">
-      <span class="mono tag">Why Romteca</span>
-      <h2 class="h2">Specialists you will not find on any job board</h2>
-      <div class="why-cols">
-        <div class="why-card"><span class="why-n">01</span><h3>Top teams from across Europe</h3><p>We know the engineering communities across Europe first-hand, and we build teams from people whose product track record we can check.</p></div>
-        <div class="why-card"><span class="why-n">02</span><h3>Hard-to-find skills</h3><p>We concentrate on disciplines where a standard job posting returns nothing, from AI and data platforms to embedded hardware, and we keep a network of specialists and teams who have already shipped comparable products.</p></div>
-        <div class="why-card"><span class="why-n">03</span><h3>Off the market, within reach</h3><p>The best engineers rarely post a CV. They move from project to project through referrals and local networks, so they never show up on job boards or recruiter databases. We know them personally and know when they become available.</p></div>
-      </div>
-      <span class="mono tag why-skills-tag">Skills our teams cover</span>
-      <div class="skill-groups">
-        <div class="skill-group"><div class="skill-head"><span>Software</span></div><div class="chips"><span>Software &amp; AI engineering</span><span>ML engineering &amp; MLOps</span><span>Data engineering</span><span>DevOps &amp; security</span></div></div>
-        <div class="skill-group"><div class="skill-head"><span>Embedded</span></div><div class="chips"><span>Embedded &amp; firmware</span><span>Edge AI on hardware</span><span>IoT backends</span><span>Test &amp; verification</span></div></div>
-        <div class="skill-group"><div class="skill-head"><span>Electronics</span></div><div class="chips"><span>Power electronics</span><span>RF &amp; antennas</span><span>FPGA &amp; hardware design</span></div></div>
-        <div class="skill-group"><div class="skill-head"><span>Mechanics</span></div><div class="chips"><span>Mechatronics</span><span>Robotics</span><span>Enclosure &amp; packaging design</span></div></div>
       </div>
     </div>
   </section>
