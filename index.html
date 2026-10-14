@@ -301,20 +301,6 @@ section.block { padding-block: clamp(56px, 9vw, 112px); }
 .contact { background: var(--fg); color: var(--bg); margin-inline: calc(-1 * clamp(16px, 4vw, 40px)); padding-inline: clamp(16px, 4vw, 40px); }
 .contact .mono, .contact .sub { color: color-mix(in srgb, var(--bg) 70%, transparent); }
 .contact .h2 em { font-style: normal; color: var(--signal); }
-form { display: grid; gap: 16px; background: var(--bg); color: var(--fg); padding: clamp(20px, 3vw, 32px); border-radius: 6px; }
-.field { display: grid; gap: 6px; min-width: 0; }
-.row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-@media (max-width: 560px) { .row2 { grid-template-columns: minmax(0, 1fr); } }
-label { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-input, select, textarea {
-  font: 400 16px var(--body); color: var(--fg); background: var(--surface);
-  border: 1px solid var(--line); border-radius: 4px; padding: 11px 12px; width: 100%;
-}
-textarea { min-height: 110px; resize: vertical; }
-.brief { display: grid; gap: 12px; }
-.brief pre { margin: 0; white-space: pre-wrap; font: 400 14px/1.55 var(--mono); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 14px; overflow-wrap: anywhere; }
-.brief .addr { font-family: var(--mono); font-size: 14px; }
-.copy-note { font-size: 14px; color: var(--muted); }
 
 footer { padding-block: 40px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; color: var(--muted); font-size: 14px; }
@@ -428,8 +414,8 @@ nav a.link[aria-current="page"] { color: var(--fg); }
 #page-sap .panel .use { font-family: var(--mono); font-size: 12.5px; letter-spacing: .02em; color: var(--fg); border-top: 1px solid var(--line); padding-top: 12px; margin-top: auto; }
 @media (max-width: 860px) { #page-sap .twocol, #page-sap .threecol { grid-template-columns: minmax(0, 1fr); } }
 #page-sap .steps .n { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--accent); font-weight: 700; display: block; }
-#page-sap .mail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--bg); color: var(--fg); border-radius: 6px; padding: 16px 18px; }
-#page-sap .mail code { font-family: var(--mono); font-size: 16px; flex: 1; min-width: 0; overflow-wrap: anywhere; user-select: all; }
+.mail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--bg); color: var(--fg); border-radius: 6px; padding: 16px 18px; }
+.mail code { font-family: var(--mono); font-size: 16px; flex: 1; min-width: 0; overflow-wrap: anywhere; user-select: all; }
 </style>
 </head>
 <body>
@@ -734,45 +720,17 @@ nav a.link[aria-current="page"] { color: var(--fg); }
   </section>
 
   <section class="block contact" id="contact">
-    <div class="wrap split" style="align-items:start">
+    <div class="wrap split" style="align-items:center">
       <div>
         <span class="mono tag">Contact us</span>
         <h2 class="h2">Tell us what stands between you and <em>launch.</em></h2>
         <p class="sub">Describe the product, the team and skills you are missing and your target date. An engineer from Romteca will reply with a first view of how we could help.</p>
       </div>
-      <div>
-        <form id="brief-form" novalidate>
-          <div class="row2">
-            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" placeholder="Your name"></div>
-            <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization" placeholder="Company or institute"></div>
-          </div>
-          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.com"></div>
-          <div class="field">
-            <label for="f-need">What do you need?</label>
-            <select id="f-need" name="need">
-              <option>Freelancers or a team for my project</option>
-              <option>A team to take over part of my R&amp;D project</option>
-              <option>Full product or MVP development</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-type">What are you building?</label>
-            <select id="f-type" name="type">
-              <option>A software or AI product</option>
-              <option>A device with embedded software</option>
-              <option>Both software and a device</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="field"><label for="f-msg">Project and target date</label><textarea id="f-msg" name="msg" placeholder="What product are you building, which team skills are hard to find, and when do you need to launch?"></textarea></div>
-          <button class="btn" type="submit">Prepare my brief</button>
-          <div class="brief" id="brief" hidden>
-            <pre id="brief-text"></pre>
-            <div class="copy-note">Copy the brief and send it to <span class="addr">hello@romteca.com</span>. We read every message.</div>
-            <button class="btn ghost small" type="button" id="copy-btn" style="justify-self:start">Copy brief</button>
-          </div>
-        </form>
+      <div style="display:grid;gap:12px">
+        <div class="mail">
+          <code id="home-mail">ask@romteca.eu</code>
+          <button class="btn small" id="home-copy" type="button">Copy email</button>
+        </div>
       </div>
     </div>
   </section>
@@ -927,10 +885,9 @@ nav a.link[aria-current="page"] { color: var(--fg); }
       </div>
       <div style="display:grid;gap:12px">
         <div class="mail">
-          <code id="sap-mail">[sap@romteca.com]</code>
+          <code id="sap-mail">sap@romteca.eu</code>
           <button class="btn small" id="sap-copy" type="button">Copy email</button>
         </div>
-        <p class="sub" style="margin-top:0">Or call [phone number]. Ask for [contact name].</p>
       </div>
     </div>
   </section>
@@ -948,37 +905,14 @@ nav a.link[aria-current="page"] { color: var(--fg); }
 
 <script>
 (function () {
-  var form = document.getElementById('brief-form');
-  var box = document.getElementById('brief');
-  var out = document.getElementById('brief-text');
-  var copyBtn = document.getElementById('copy-btn');
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll('svg').forEach(function (v) { if (v.pauseAnimations) v.pauseAnimations(); });
   }
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = function (id) { return document.getElementById(id).value.trim() || '-'; };
-    out.textContent =
-      'Project brief for Romteca' + '\n\n' +
-      'Name: ' + v('f-name') + '\n' +
-      'Company:' + ' ' + v('f-company') + '\n' +
-      'Email:' + ' ' + v('f-email') + '\n' +
-      'Product:' + ' ' + document.getElementById('f-type').value + '\n' +
-      'Need:' + ' ' + document.getElementById('f-need').value + '\n\n' +
-      v('f-msg');
-    box.hidden = false;
-    copyBtn.textContent = 'Copy brief';
-  });
-  copyBtn.addEventListener('click', function () {
-    var text = out.textContent;
-    var fallback = function () {
-      var r = document.createRange(); r.selectNodeContents(out);
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      copyBtn.textContent = 'Selected, press copy';
-    };
-    try {
-      navigator.clipboard.writeText(text).then(function () { copyBtn.textContent = 'Copied'; }, fallback);
-    } catch (err) { fallback(); }
+  var mail = document.getElementById('home-mail'), btn = document.getElementById('home-copy');
+  btn.addEventListener('click', function () {
+    var done = function (msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy email'; }, 2200); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(mail); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); done('Selected, press copy'); };
+    try { navigator.clipboard.writeText(mail.textContent).then(function () { done('Copied'); }, fallback); } catch (err) { fallback(); }
   });
 })();
 </script>
