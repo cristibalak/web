@@ -1,0 +1,22 @@
+<header class="bar">
+  <div class="wrap">
+    <div class="brand"><a class="logo" href="{{ '/' | relative_url }}" aria-label="Romteca home">
+      <svg viewBox="72 316 572 90" role="img" aria-label="romteca" focusable="false"><text class="lg-prompt" x="80" y="397.5" textLength="58" lengthAdjust="spacingAndGlyphs">&gt;</text><text class="lg-word" x="156" y="397.5" textLength="406" lengthAdjust="spacingAndGlyphs">romteca</text><rect class="cursor" x="580" y="381.5" width="56" height="14" rx="2"/></svg>
+    </a>{% if page.logo_tag %}<span class="logo-tag">{{ page.logo_tag }}</span>{% endif %}</div>
+    <nav aria-label="Main">
+      <div class="links" id="menu">
+{%- for item in site.data.nav %}
+        <a class="link" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+{%- endfor %}
+      </div>
+      <a class="btn small" id="hdr-cta" href="{{ page.cta_href | default: '/#contact' | relative_url }}">{{ page.cta_text | default: 'Talk to an engineer' }}</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+      <div class="qrow">
+        <span class="qtitle">Quick links</span>
+{%- for item in site.data.quicklinks %}
+        <a class="qlabel" href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a>
+{%- endfor %}
+      </div>
+    </nav>
+  </div>
+</header>

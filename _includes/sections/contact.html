@@ -1,0 +1,21 @@
+{%- comment -%}
+  Contact block with a copy-email button.
+  Optional parameters: id, tag, title (HTML allowed), text, email.
+{%- endcomment -%}
+<section class="block contact" id="{{ include.id | default: 'contact' }}">
+    <div class="wrap split" style="align-items:center">
+      <div>
+        <span class="mono tag">{{ include.tag | default: 'Contact us' }}</span>
+        <h2 class="h2">{{ include.title | default: 'Tell us what stands between you and <em>launch.</em>' }}</h2>
+        {%- if include.text != false %}
+        <p class="sub">{{ include.text | default: 'Describe the product, the team and skills you are missing and your target date. An engineer from Romteca will reply with a first view of how we could help.' }}</p>
+        {%- endif %}
+      </div>
+      <div style="display:grid;gap:12px">
+        <div class="mail">
+          <code>{{ include.email | default: 'ask@romteca.eu' }}</code>
+          <button class="btn small" type="button" data-copy>Copy email</button>
+        </div>
+      </div>
+    </div>
+  </section>

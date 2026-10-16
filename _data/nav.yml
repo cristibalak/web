@@ -1,0 +1,11 @@
+# Main menu. Each item: title shown, url it links to.
+- title: Services
+  url: /#services
+- title: Why Romteca
+  url: /#talent
+- title: Case Studies
+  url: /#proof
+- title: About
+  url: /#about
+- title: Offices
+  url: /#offices
