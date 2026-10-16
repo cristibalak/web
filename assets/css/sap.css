@@ -255,3 +255,16 @@ a:hover { color: var(--teal); }
   .marquee-track, .pulse, .off-fig .ping, .logo:hover .cursor { animation: none; }
 }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Talentpool: facts row below the map */
+.facts-row { margin-top: 56px; }
+.facts-row > div { flex: 1 1 230px; }
+/* Footer social link */
+.sfoot .social { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--on-dark); }
+.sfoot .social svg { color: var(--on-dark); transition: color .15s ease; }
+.sfoot .social:hover svg, .sfoot .social:hover { color: var(--amber); }
+/* Impressum */
+.legal { max-width: 760px; }
+.legal h1 { font-size: clamp(34px, 4.6vw, 48px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800; margin-top: 14px; }
+.legal h2 { font-size: 21px; font-weight: 700; margin-top: 40px; }
+.legal p, .legal address { font-style: normal; font-size: 17px; line-height: 1.6; color: var(--text); margin-top: 12px; }
+.legal .back { display: inline-block; margin-top: 48px; font-weight: 600; }
