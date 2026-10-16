@@ -411,3 +411,16 @@ nav a.link[aria-current="page"] { color: var(--fg); }
 #hero-fig .g1 { animation-delay: .2s; } #hero-fig .g2 { animation-delay: .4s; } #hero-fig .g3 { animation-delay: .6s; } #hero-fig .g4 { animation-delay: .8s; } #hero-fig .g5 { animation-delay: 1s; }
 @keyframes heroGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) { #hero-fig .grow { animation: none; } }
+/* Footer: imprint link and LinkedIn */
+footer a { color: var(--fg); }
+footer .foot-right { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+footer .foot-connect { display: inline-flex; align-items: center; gap: 10px; }
+footer .foot-lbl { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+footer .social { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: var(--fg); }
+footer .social:hover { color: var(--accent); }
+/* Imprint page */
+.legal { max-width: 760px; }
+.legal h1 { font-family: var(--display); font-size: clamp(2.2rem, 4.6vw, 3.2rem); line-height: 1.05; letter-spacing: -0.03em; margin-top: 14px; }
+.legal h2 { font-size: 1.25rem; letter-spacing: -0.01em; margin-top: 40px; }
+.legal p, .legal address { font-style: normal; color: var(--muted); margin-top: 10px; }
+.legal .back { display: inline-block; margin-top: 48px; font-weight: 600; }
