@@ -1,0 +1,13 @@
+# Menu of the SAP page. Links stay on /sap/.
+- title: Module
+  url: /sap/#module
+- title: Ablauf
+  url: /sap/#ablauf
+- title: Modelle
+  url: /sap/#modelle
+- title: Talentpool
+  url: /sap/#talentpool
+- title: Über uns
+  url: /sap/#ueber-uns
+- title: FAQ
+  url: /sap/#faq

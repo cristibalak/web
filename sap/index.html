@@ -1,152 +1,362 @@
 ---
-layout: default
-title: Romteca for SAP
-main_id: page-sap
-logo_tag: SAP
-cta_text: Request consultants
-cta_href: /sap/#sap-contact
-scripts: [sap.js]
+layout: sap
+title: Romteca – SAP-Freelancer für Ihr Beratungshaus
+description: SAP-Freelancer und Teams aus Osteuropa, remote für Ihr Beratungshaus. Persönlich geprüft, gleiche Zeitzone, EU-Recht.
 ---
-  <section class="hero">
-    <div class="wrap">
-      <div>
-        <span class="mono eyebrow">Freelance SAP consultants · Eastern Europe</span>
-        <h1>The SAP talent pool <em>your competitors haven't found yet.</em></h1>
+{%- comment -%}
+  Standalone German SAP page with its own layout (_layouts/sap.html), menu (_data/sap_nav.yml),
+  styles (assets/css/sap.css) and script (assets/js/sap.js). Nothing here syncs with the main page.
+{%- endcomment %}
+  <section class="swrap hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow">Für SAP-Beratungshäuser im Mittelstand</p>
+      <h1>Ihr Kunde will starten. Ihr Team ist ausgebucht. Sagen Sie trotzdem Ja.</h1>
+      <p class="lede">Sie haben die Projektanfrage, die Kundenbeziehung und den Ruf. Was fehlt, sind freie Berater. Wir ergänzen Ihr Team remote mit erfahrenen SAP-Freelancern aus Osteuropa – genau für die Module, die Ihnen gerade fehlen.</p>
+      <div class="cta">
+        <a class="sbtn" href="#kontakt">Passende Profile anfordern</a>
+        <a class="sbtn ghost" href="#module">Welches Modul fehlt Ihnen?</a>
       </div>
-      <div>
-        <p class="lede" style="margin-top:0">We give SAP integrators and in-house SAP teams access to experienced freelance consultants across Eastern Europe. Most of them work through local networks and never appear on the platforms everyone else is searching. We vet them, match them to your project and plug them into your team.</p>
-        <div class="cta">
-          <a class="btn" href="#sap-contact">Tell us your open roles</a>
-          <a class="btn ghost" href="#sap-board">See a team come together</a>
+      <ul class="ticks">
+        <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B5F75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Ihr Kunde, Ihre Marke</li>
+        <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B5F75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Kein Fixkostenrisiko</li>
+        <li><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B5F75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Gleiche Zeitzone (±1 h), EU-Recht</li>
+      </ul>
+    </div>
+    <figure class="hero-fig">
+      <div class="pcard" role="img" aria-label="Animation: Ein S/4HANA-Projektteam, in dem offene Rollen nacheinander von Romteca-Freelancern besetzt werden">
+        <div class="pc-head">
+          <div><span class="pc-meta">PROJEKT · MASCHINENBAU · 340 MA</span><span class="pc-title">S/4HANA Brownfield-Migration</span></div>
+          <span class="pc-kick"><span class="pulse">●</span> Kickoff in 3 Wochen</span>
         </div>
+        <div class="pc-rule"></div>
+          <div class="slot team"><div><span class="code">PL</span><span class="what">Projektleitung</span><span class="st">Ihr Team</span></div></div>
+          <div class="slot team"><div><span class="code">FI/CO</span><span class="what">Finanzen &amp; Controlling</span><span class="st">Ihr Team</span></div></div>
+          <div class="slot open d1"><div class="base"><span class="code">MM/EWM</span><span class="what">Einkauf &amp; Lager</span><span class="st">offen</span></div><div class="fill"><span class="code">MM/EWM</span><span class="what">Senior-Beraterin, 11 J. Erfahrung</span><span class="st">Romteca</span></div></div>
+          <div class="slot open d2"><div class="base"><span class="code">ABAP</span><span class="what">Custom-Code-Migration</span><span class="st">offen</span></div><div class="fill"><span class="code">ABAP</span><span class="what">2 Entwickler, RAP &amp; ATC</span><span class="st">Romteca</span></div></div>
+          <div class="slot open d3"><div class="base"><span class="code">CPI</span><span class="what">PI/PO → Integration Suite</span><span class="st">offen</span></div><div class="fill"><span class="code">CPI</span><span class="what">Integrationsarchitekt</span><span class="st">Romteca</span></div></div>
+          <div class="slot open d4"><div class="base"><span class="code">FIORI</span><span class="what">Apps für Lager &amp; Produktion</span><span class="st">offen</span></div><div class="fill"><span class="code">FIORI</span><span class="what">UI5-Entwickler, BTP</span><span class="st">Romteca</span></div></div>
+        <div class="pc-foot"><span>4 Rollen offen · Angebot an den Kunden steht noch aus</span><span class="done"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A317" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Team vollständig – Angebot geht raus.</span></div>
+      </div>
+      <figcaption>Beispielhafte Darstellung</figcaption>
+    </figure>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>FI</span><span>CO</span><span>MM</span><span>SD</span><span>PP</span><span>QM</span><span>EWM</span><span>TM</span><span>PS</span><span>ABAP</span><span>RAP</span><span>BTP</span><span>Fiori/UI5</span><span>Integration Suite</span><span>PI/PO</span><span>Basis</span><span>HANA</span><span>SAC</span><span>BW/4</span><span>SuccessFactors</span><span>HCM</span><span>FI</span><span>CO</span><span>MM</span><span>SD</span><span>PP</span><span>QM</span><span>EWM</span><span>TM</span><span>PS</span><span>ABAP</span><span>RAP</span><span>BTP</span><span>Fiori/UI5</span><span>Integration Suite</span><span>PI/PO</span><span>Basis</span><span>HANA</span><span>SAC</span><span>BW/4</span><span>SuccessFactors</span><span>HCM</span></div></div>
+
+  <section class="sec">
+    <div class="swrap stack">
+      <div class="sec-head">
+        <p class="eyebrow">Kennen Sie das?</p>
+        <h2 class="h2">Ihr Wachstum hängt nicht an Aufträgen. Es hängt an Köpfen.</h2>
+      </div>
+      <div class="cards">
+        <div class="card"><span class="num">01</span><h3>Anfrage da, Berater nicht</h3><p>Ein Bestandskunde will S/4HANA, EWM oder die Integration Suite – und Ihre Leute stecken bis Mitte nächsten Jahres in laufenden Projekten.</p></div>
+        <div class="card"><span class="num">02</span><h3>Recruiting dauert Monate</h3><p>Die Stellenanzeige läuft seit Wochen. Erfahrene SAP-Berater in Deutschland sind gebunden – und die wenigen Freien kennt jeder Ihrer Wettbewerber auch.</p></div>
+        <div class="card"><span class="num">03</span><h3>Festanstellung ist ein Wagnis</h3><p>Für eine Projektspitze von sechs Monaten jemanden fest einstellen? Das rechnet sich nur, wenn die Pipeline danach genauso voll bleibt.</p></div>
+        <div class="card"><span class="num">04</span><h3>Die S/4-Welle rollt</h3><p>Das Wartungsende von ECC 6.0 drängt Ihre Kunden zur Migration – alle gleichzeitig. Wer jetzt liefern kann, gewinnt Kunden für die nächsten zehn Jahre.</p></div>
       </div>
     </div>
   </section>
 
-  <div class="wrap">
-    <div class="chips" aria-label="Modules and skills we staff" style="margin-top:0">
-      <span class="k">S/4HANA</span><span>FI</span><span>CO</span><span>MM</span><span>SD</span><span>PP</span><span>QM</span><span>PM</span><span>EWM</span><span>TM</span><span>MDG</span><span>ABAP</span><span>RAP</span><span>Fiori/UI5</span><span>Basis</span><span class="k">BTP</span><span>CPI</span><span>BW/4HANA</span><span>SAC</span><span>Datasphere</span><span class="k">SuccessFactors</span><span>Ariba</span><span>IBP</span>
-    </div>
-  </div>
-
-  <section class="block" id="sap-board" style="padding-bottom:0">
-    <div class="wrap">
-      <span class="mono tag">Team builder</span>
-      <h2 class="h2">Staff each phase, then <em class="two">scale down</em></h2>
-      <div class="board">
-        <div class="board-head">
+  <section class="sec dark" id="module">
+    <div class="swrap stack">
+      <div class="sec-head">
+        <p class="eyebrow">Ihre Lücke, unser Profil</p>
+        <h2 class="h2">Welches Modul fehlt in Ihrem nächsten Projekt?</h2>
+        <p class="intro">Wählen Sie einen Bereich – wir zeigen, wo unsere Freelancer typischerweise in Projekten wie Ihren einsteigen.</p>
+      </div>
+      <div class="chips" role="group" aria-label="SAP-Modul auswählen">
+          <button type="button" aria-pressed="true" aria-controls="mod-0">S/4HANA</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-1">FI/CO</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-2">MM</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-3">SD</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-4">PP/QM</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-5">EWM</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-6">ABAP</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-7">BTP/Fiori</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-8">Integration Suite</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-9">Basis/HANA</button>
+          <button type="button" aria-pressed="false" aria-controls="mod-10">SuccessFactors</button>
+      </div>
+        <div class="mod" id="mod-0">
           <div>
-            <h3>Pick a project type</h3>
-            <p>Watch the team fill as the project moves through the SAP Activate phases, and roll off once their work is done. You pay for the people the phase needs, not the people a bench happens to hold.</p>
+            <span class="tag">S/4HANA</span>
+            <h3>S/4HANA-Migration</h3>
+            <p>Ihr Kunde will vor dem ECC-Wartungsende umsteigen – und Sie brauchen zusätzliche Hände für Readiness-Check, Custom Code und Datenmigration.</p>
           </div>
-          <div class="scen" role="group" aria-label="Project type" id="sap-scen"></div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Brownfield- und Greenfield-Analysen</li><li>Custom-Code-Bereinigung mit ATC</li><li>Datenmigration und Testmanagement</li></ul>
+            <a class="sbtn small" href="#kontakt">S/4HANA-Profile anfragen</a>
+          </div>
         </div>
-        <div class="phases" id="sap-phases" role="group" aria-label="Project phase"></div>
-        <div class="bgrid">
-          <div class="streams" id="sap-streams"></div>
-          <aside class="side" aria-live="polite">
-            <div>
-              <div class="lbl">On the project now</div>
-              <div class="bigno" id="sap-count">0</div>
-            </div>
-            <div>
-              <div class="lbl" style="margin-bottom:8px">Team size by phase</div>
-              <div class="bars" id="sap-bars"></div>
-              <div class="bars-x"><span>Prep</span><span>Expl</span><span>Real</span><span>Depl</span><span>Run</span></div>
-            </div>
-            <p id="sap-phase-note"></p>
-            <button class="btn small" id="sap-replay" type="button" style="align-self:flex-start"><svg class="spin" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M21 12a9 9 0 1 1-3-6.7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M21 3v6h-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Replay</button>
-          </aside>
+        <div class="mod" id="mod-1" hidden>
+          <div>
+            <span class="tag">FI/CO</span>
+            <h3>Finanzen &amp; Controlling</h3>
+            <p>Erfahrene Berater für Hauptbuch, Anlagen, Kostenrechnung und Ergebnisrechnung – fachlich stark und kundentauglich.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Universal Journal und neues Hauptbuch</li><li>Profitcenter- und Ergebnisrechnung</li><li>Abschlussprozesse und Reporting</li></ul>
+            <a class="sbtn small" href="#kontakt">FI/CO-Profile anfragen</a>
+          </div>
         </div>
-        <p class="bnote">Illustrative staffing plan. Actual team shapes depend on your scope.</p>
-      </div>
+        <div class="mod" id="mod-2" hidden>
+          <div>
+            <span class="tag">MM</span>
+            <h3>Materialwirtschaft &amp; Einkauf</h3>
+            <p>Für Procure-to-Pay-Prozesse, die beim Mittelstand oft historisch gewachsen sind und jetzt sauber nach S/4 sollen.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Einkaufs- und Freigabeprozesse</li><li>Bestandsführung und Bewertung</li><li>Lieferantenstammdaten bereinigen</li></ul>
+            <a class="sbtn small" href="#kontakt">MM-Profile anfragen</a>
+          </div>
+        </div>
+        <div class="mod" id="mod-3" hidden>
+          <div>
+            <span class="tag">SD</span>
+            <h3>Vertrieb</h3>
+            <p>Order-to-Cash von Angebot bis Faktura – inklusive der Sonderfälle, die jeder Kunde für einzigartig hält.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Preisfindung und Konditionen</li><li>Fakturierung und Gutschriften</li><li>Output Management in S/4</li></ul>
+            <a class="sbtn small" href="#kontakt">SD-Profile anfragen</a>
+          </div>
+        </div>
+        <div class="mod" id="mod-4" hidden>
+          <div>
+            <span class="tag">PP/QM</span>
+            <h3>Produktion &amp; Qualität</h3>
+            <p>Typisch für Maschinenbau und Fertigung: Planung, Rückmeldung und Prüfabwicklung, eng verzahnt mit dem Shopfloor.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Fertigungsaufträge und Rückmeldungen</li><li>MRP Live und Bedarfsplanung</li><li>Prüflose und Qualitätsmeldungen</li></ul>
+            <a class="sbtn small" href="#kontakt">PP/QM-Profile anfragen</a>
+          </div>
+        </div>
+        <div class="mod" id="mod-5" hidden>
+          <div>
+            <span class="tag">EWM</span>
+            <h3>Extended Warehouse Management</h3>
+            <p>EWM-Know-how ist knapp. Wir finden Berater, die schon echte Lager live gebracht haben.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Embedded EWM einführen</li><li>Wellen, Kommissionierung, RF-Dialoge</li><li>Anbindung von Fördertechnik</li></ul>
+            <a class="sbtn small" href="#kontakt">EWM-Profile anfragen</a>
+          </div>
+        </div>
+        <div class="mod" id="mod-6" hidden>
+          <div>
+            <span class="tag">ABAP</span>
+            <h3>ABAP-Entwicklung</h3>
+            <p>Klassisches ABAP bis RAP und Clean Core: die Entwickler, die Ihre Factory gerade dringend braucht.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>ABAP OO, Formulare, Workflows</li><li>RAP und CDS Views</li><li>Clean-Core-Refactoring</li></ul>
+            <a class="sbtn small" href="#kontakt">ABAP-Profile anfragen</a>
+          </div>
+        </div>
+        <div class="mod" id="mod-7" hidden>
+          <div>
+            <span class="tag">BTP/Fiori</span>
+            <h3>BTP &amp; Fiori/UI5</h3>
+            <p>Moderne Oberflächen und Side-by-Side-Erweiterungen, damit der SAP-Kern sauber bleibt.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Fiori-Apps für Lager und Produktion</li><li>CAP-Anwendungen auf der BTP</li><li>Launchpad und Rollenkonzepte</li></ul>
+            <a class="sbtn small" href="#kontakt">BTP-Profile anfragen</a>
+          </div>
+        </div>
+        <div class="mod" id="mod-8" hidden>
+          <div>
+            <span class="tag">Integration Suite</span>
+            <h3>Integration</h3>
+            <p>PI/PO läuft aus – Ihre Kunden müssen auf die Integration Suite. Dafür braucht es Erfahrung mit beiden Welten.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Migration PI/PO auf Integration Suite</li><li>EDI und Partneranbindung</li><li>API-Management</li></ul>
+            <a class="sbtn small" href="#kontakt">Integrations-Profile anfragen</a>
+          </div>
+        </div>
+        <div class="mod" id="mod-9" hidden>
+          <div>
+            <span class="tag">Basis/HANA</span>
+            <h3>Basis &amp; HANA</h3>
+            <p>Systembetrieb, Upgrades und Sicherheit – auch für die Nacht- und Wochenendfenster, die Ihr Team ungern übernimmt.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Upgrades und Systemkopien</li><li>HANA-Administration und Security</li><li>RISE- und Cloud-Umzüge</li></ul>
+            <a class="sbtn small" href="#kontakt">Basis-Profile anfragen</a>
+          </div>
+        </div>
+        <div class="mod" id="mod-10" hidden>
+          <div>
+            <span class="tag">SuccessFactors</span>
+            <h3>SuccessFactors &amp; HCM</h3>
+            <p>Vom klassischen HCM bis Employee Central: Berater für HR-Prozesse in der Cloud und on-premise.</p>
+          </div>
+          <div>
+            <span class="lbl">Typische Einsätze</span>
+            <ul><li>Employee Central einführen</li><li>Payroll und Zeitwirtschaft</li><li>Integration HCM zu SuccessFactors</li></ul>
+            <a class="sbtn small" href="#kontakt">HR-Profile anfragen</a>
+          </div>
+        </div>
     </div>
   </section>
 
-  <section class="block" id="sap-pool">
-    <div class="wrap">
-      <span class="mono tag">The pool</span>
-      <h2 class="h2" style="max-width:18em">Senior SAP people who aren't on everyone's radar</h2>
-      <div class="split" style="margin-top:clamp(28px,4vw,48px);align-items:start">
-        <div class="prose">
-          <p>Eastern Europe has trained SAP consultants for two decades, through global delivery centres, local integrators and large rollouts across the region. Many of the best have gone freelance. They find work through referrals and local networks, so they rarely show up on the international platforms and recruiter databases.</p>
-          <p>That is our network. We know these consultants personally, we know what they delivered, and we can tell you who fits your project before you spend a day interviewing.</p>
-        </div>
-        <dl class="sfacts">
-          <div class="sfact"><dt>Time zone</dt><dd><b>CET to EET</b><span>Same working day as your DACH and Western European teams, at most one hour apart.</span></dd></div>
-          <div class="sfact"><dt>Contracts</dt><dd><b>EU-based freelancers</b><span>Invoiced within the EU, under one framework agreement with us.</span></dd></div>
-          <div class="sfact"><dt>Languages</dt><dd><b>English, plus [German / others]</b><span>Client-facing consultants, comfortable in workshops and steering meetings.</span></dd></div>
-          <div class="sfact"><dt>Delivery</dt><dd><b>Remote or on site</b><span>Remote by default, travelling for blueprint workshops, go-live and hypercare.</span></dd></div>
-        </dl>
+  <section class="sec" id="talentpool">
+    <div class="swrap split">
+      <div class="copy">
+        <p class="eyebrow">Der Talentpool, den Ihre Wettbewerber nicht sehen</p>
+        <h2 class="h2">Die besten Berater stehen nicht auf deutschen Jobbörsen.</h2>
+        <p>In Rumänien und ganz Osteuropa arbeiten seit Jahren SAP-Spezialisten in internationalen Rollouts – oft für deutsche Konzerne, über große Dienstleister. Für einen Mittelständler sind sie praktisch unsichtbar. Wir kennen sie persönlich, weil wir selbst aus diesem Netzwerk kommen.</p>
       </div>
+      <div class="facts4">
+        <div><h3>Persönlich geprüft</h3><p>Jedes Profil durchläuft ein Fachinterview im jeweiligen Modul – nicht nur ein Keyword-Abgleich.</p></div>
+        <div><h3>Gleicher Arbeitstag</h3><p>Bukarest liegt nur eine Stunde vor Frankfurt. Daily um 9 Uhr? Kein Problem.</p></div>
+        <div><h3>EU-Recht &amp; DSGVO</h3><p>Rumänien ist EU-Mitglied. Keine Drittland-Fragen beim Systemzugriff, keine Visa.</p></div>
+        <div><h3>Deutsch oder Englisch</h3><p>Sie legen die Projektsprache fest. Wir schlagen nur vor, wer sie sicher beherrscht.</p></div>
+      </div>
+    </div>
+    <div class="swrap map" style="margin-top:96px">
+      <div class="copy">
+        <p class="eyebrow">Fachkräfte aus ganz Europa</p>
+        <h2 class="h2">Unser <em>Talentpool</em></h2>
+        <p>Wir arbeiten von zwei Standorten aus: Cluj-Napoca in Rumänien und Freudenstadt im Raum Stuttgart. Von dort stellen wir Teams aus ganz Europa zusammen und verbinden das Beste aus beiden Welten: Verfügbarkeit, Preis und fachliche Qualität.</p>
+        <a class="sbtn ghost small" href="#kontakt">Sagen Sie uns, was Sie brauchen</a>
+      </div>
+      <figure class="map-fig">
+        <img src="{{ '/img/talent-map-light.webp' | relative_url }}" width="514" height="522" loading="lazy" decoding="async" alt="Europakarte, von Orange im Westen bis Blau im Osten eingefärbt, mit unseren zwei Standorten: Stuttgart in Deutschland und Cluj-Napoca in Rumänien">
+      </figure>
     </div>
   </section>
 
-  <section class="block why" id="sap-who" style="padding-block:clamp(56px,9vw,112px)">
-    <div class="wrap">
-      <span class="mono tag">Who we work with</span>
-      <h2 class="h2" style="max-width:18em">Built for SAP integrators. Open to SAP customers.</h2>
-      <div class="twocol">
-        <div class="panel main">
-          <h3>SAP integrators and partners</h3>
-          <p>Your pipeline grows faster than your bench. We fill the gaps so you can say yes to the next project.</p>
-          <ul>
-            <li>Subcontracted consultants who work under your project lead and methodology</li>
-            <li>Cover for scarce skills: EWM, TM, MDG, BTP, Employee Central Payroll</li>
-            <li>Extra hands for the Realize peak, data migration and hypercare</li>
-            <li>Discreet: consultants represent your brand to your client</li>
-          </ul>
-        </div>
-        <div class="panel" style="background:var(--bg)">
-          <h3>Companies running their own SAP projects</h3>
-          <p>Your internal team owns the system. We add the specialists you need for a rollout, an upgrade or a new module, without a long-term hire.</p>
-          <ul>
-            <li>Single experts for a module or a workstream</li>
-            <li>Interim support while you hire permanently</li>
-            <li>Clean handover to your team when the work is done</li>
-          </ul>
-        </div>
+  <section class="sec band" id="ablauf">
+    <div class="swrap stack">
+      <div class="sec-head">
+        <p class="eyebrow">So einfach geht’s</p>
+        <h2 class="h2">Vom Anruf zum Projektstart – Sie behalten die Kontrolle.</h2>
       </div>
-    </div>
-  </section>
-
-  <section class="block" id="sap-models">
-    <div class="wrap">
-      <span class="mono tag">Engagement models</span>
-      <h2 class="h2">One consultant or a whole workstream</h2>
-      <div class="threecol">
-        <article class="panel">
-          <h3>Single expert</h3>
-          <p>One named consultant for a specific role, for example a senior FI/CO lead or an EWM solution architect.</p>
-          <div class="use">Best for skill gaps on a running project</div>
-        </article>
-        <article class="panel feat">
-          <h3>Team extension</h3>
-          <p>Several consultants who join your project team, ramp up by phase and roll off when their workstream is done.</p>
-          <div class="use">Best for S/4HANA implementations and conversions</div>
-        </article>
-        <article class="panel">
-          <h3>Workstream pod</h3>
-          <p>A small self-organised team with its own lead, taking on a defined scope such as custom code remediation or data migration.</p>
-          <div class="use">Best for well-defined packages of work</div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="sap-how" style="padding-top:0">
-    <div class="wrap">
-      <span class="mono tag">How it works</span>
-      <h2 class="h2" style="max-width:18em">From open role to consultant on the project</h2>
       <ol class="steps">
-        <li><span class="n">Step 1</span><h3>Share the role</h3><p>Module, seniority, start date, duration, remote or on site. A short call is enough.</p></li>
-        <li><span class="n">Step 2</span><h3>Get a shortlist</h3><p>Pre-vetted profiles with project history and availability, within [X working days].</p></li>
-        <li><span class="n">Step 3</span><h3>Interview and choose</h3><p>You talk to the consultants and pick who joins. No obligation until you decide.</p></li>
-        <li><span class="n">Step 4</span><h3>Onboard and deliver</h3><p>One contract with us. We stay in touch through the project and handle extensions or replacements.</p></li>
+        <li><span class="num">01</span><h3>30 Minuten Bedarf</h3><p>Modul, Release, Projektphase, Sprache, Startdatum. Sie sprechen mit jemandem, der SAP versteht – nicht mit einem Callcenter.</p></li>
+        <li><span class="num">02</span><h3>Wenige, passende Profile</h3><p>Statt eines Stapels Lebensläufe erhalten Sie eine kurze Auswahl – fachlich vorgeprüft und auf Wunsch anonymisiert für Ihr Kundenangebot.</p></li>
+        <li><span class="num">03</span><h3>Sie führen das Interview</h3><p>Ihr Fachexperte prüft selbst. Erst wenn Sie überzeugt sind, geht es weiter.</p></li>
+        <li><span class="num">04</span><h3>Start &amp; Begleitung</h3><p>Ein fester Ansprechpartner bei uns bleibt während des gesamten Einsatzes an Ihrer Seite – inklusive Ersatz, falls es einmal nicht passt.</p></li>
       </ol>
     </div>
   </section>
 
-  {% include sections/contact.html id="sap-contact" tag="Open roles?" title="Send us the role. We'll send you <em>people.</em>" text=false email="sap@romteca.eu" %}
+  <section class="sec" id="modelle">
+    <div class="swrap">
+      <div class="stack">
+        <div class="sec-head">
+          <p class="eyebrow">Zusammenarbeit</p>
+          <h2 class="h2">So viel Verstärkung, wie Ihr Projekt gerade braucht.</h2>
+        </div>
+        <div class="cards">
+          <div class="model"><h3>Einzelner Experte</h3><p>Ein Berater oder Entwickler schließt genau die eine Lücke im Team – vom Sprint bis zur Langzeitbegleitung.</p><p class="use">Ideal für: Spitzen, Urlaubs- und Krankheitsvertretung</p></div>
+          <div class="model feat"><span class="badge">Am häufigsten angefragt</span><h3>Eingespieltes Team</h3><p>Mehrere Spezialisten, die bereits zusammengearbeitet haben – etwa ABAP plus Integration für eine Migration.</p><p class="use">Ideal für: S/4HANA-Migrationen, Rollouts</p></div>
+          <div class="model"><h3>Verlängerte Werkbank</h3><p>Ein fester Kapazitätsblock unter Ihrer Marke – für AMS, Entwicklung oder Ihre ABAP-Factory. Ihr Kunde sieht nur Sie.</p><p class="use">Ideal für: Wartung, Support, Dauerbedarf</p></div>
+        </div>
+      </div>
+      <h2 class="cmp-h">Im Vergleich</h2>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead><tr><th scope="col"><span class="sr">Kriterium</span></th><th scope="col">Festanstellung</th><th scope="col">Klassischer Vermittler</th><th scope="col" class="us">Romteca</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Zeit bis Projektstart</th><td>Monate</td><td>Wochen</td><td class="us">Tage bis wenige Wochen</td></tr>
+            <tr><th scope="row">Kandidatenpool</th><td>Deutscher Arbeitsmarkt</td><td>Dieselben Profile wie bei allen</td><td class="us">Osteuropäisches Netzwerk</td></tr>
+            <tr><th scope="row">Fixkostenrisiko</th><td>Hoch</td><td>Gering</td><td class="us">Gering</td></tr>
+            <tr><th scope="row">Auftritt beim Kunden</th><td>Ihre Marke</td><td>Unterschiedlich</td><td class="us">Ihre Marke</td></tr>
+            <tr><th scope="row">Fachliche Vorprüfung</th><td>Durch Sie</td><td>Oft nur Keywords</td><td class="us">Modul-Fachinterview</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-  <div class="wrap"><p class="sap-legal" style="padding-top:28px">SAP, S/4HANA, SuccessFactors, Ariba and BTP are trademarks of SAP SE. Romteca is not affiliated with SAP SE.</p></div>
+  <section class="sec band" id="ueber-uns">
+    <div class="swrap about">
+      <div class="about-who">
+        <img class="portrait" src="{{ '/img/cristian-balaceanu.jpg' | relative_url }}" alt="Porträt von Cristian Balaceanu, Gründer von Romteca" width="400" height="400" loading="lazy">
+        <p class="who-name">Cristian Balaceanu</p>
+        <p class="who-role">Gründer und Inhaber</p>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">Über uns</p>
+        <h2 class="h2">Inhabergeführt, mit über 20 Jahren Erfahrung im Engineering.</h2>
+        <p>Romteca wurde 2014 von dem Mikroelektronik-Ingenieur Cristian Balaceanu gegründet und verbindet über 20 Jahre Engineering- und Unternehmererfahrung mit einem inhabergeführten, praxisnahen Ansatz. Sie arbeiten direkt mit uns – mit dem Blick eines Ingenieurs auf Ihr Projekt.</p>
+        <ul class="about-facts">
+          <li><b>Gegründet</b>2014</li>
+          <li><b>Hintergrund</b>B.Sc. Mikroelektronik</li>
+          <li><b>Standorte</b>Freudenstadt, Cluj-Napoca</li>
+        </ul>
+        <a class="sbtn ghost small" href="https://www.linkedin.com/in/cristianbalaceanu/" target="_blank" rel="noopener noreferrer">Auf LinkedIn vernetzen <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="standorte">
+    <div class="swrap offices">
+      <div class="copy">
+        <p class="eyebrow">Standorte</p>
+        <h2 class="h2">Hier finden Sie uns.</h2>
+        <p>Zwei Standorte bringen uns näher an mehr Kunden und geben Ihnen Zugang zu einem größeren Pool an Fachkräften für Ihr Team.</p>
+        <div class="places">
+          <div><b>Freudenstadt</b><span>Campus Schwarzwald, Herzog-Eberhard-Straße 56, 72250 Freudenstadt, Deutschland</span></div>
+          <div><b>Cluj-Napoca</b><span>Tetarom Business Park, Taietura Turcului 47, Cluj-Napoca, Rumänien</span></div>
+        </div>
+      </div>
+      <figure class="off-fig">
+        <svg viewBox="0 0 520 260" role="img" aria-label="Kartenskizze mit einem Bogen zwischen Freudenstadt in Deutschland und Cluj-Napoca in Rumänien, rund 1.150 Kilometer voneinander entfernt">
+          <path class="grid" d="M86 20V245M231 20V245M375 20V245M0 94H520M0 137H520M0 180H520"/>
+          <g class="t" style="font-size:9px"><text x="88" y="15">10°O</text><text x="233" y="15">15°O</text><text x="377" y="15">20°O</text><text x="6" y="91">49°N</text><text x="6" y="134">48°N</text><text x="6" y="177">47°N</text></g>
+          <path class="arc" d="M40 118Q260 20 480 190"/>
+          <circle class="ping" cx="40" cy="118" r="7"/><circle class="pt" cx="40" cy="118" r="7"/>
+          <circle class="pt" cx="480" cy="190" r="7"/>
+          <text class="tb" x="40" y="146">Freudenstadt</text>
+          <text class="t" x="40" y="162">48,46° N 8,41° O</text>
+          <text class="tb" x="480" y="220" text-anchor="end">Cluj-Napoca</text>
+          <text class="t" x="480" y="236" text-anchor="end">46,77° N 23,62° O</text>
+          <text class="t" x="262" y="66" text-anchor="middle" style="fill:var(--ink)">≈ 1.150 km · 1 h Zeitunterschied</text>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec white faq" id="faq">
+    <div class="swrap faq-in">
+      <h2 class="h2">Was Geschäftsführer uns zuerst fragen</h2>
+      <div>
+        <details open><summary>Merkt mein Kunde, dass der Berater von Romteca kommt?</summary><p>Nur wenn Sie es möchten. Unsere Freelancer arbeiten auf Wunsch unter Ihrer Marke, mit Ihrer E-Mail-Adresse und nach Ihren Projektstandards.</p></details>
+        <details><summary>Wie stellen Sie die fachliche Qualität sicher?</summary><p>Jeder Kandidat führt mit uns ein Fachinterview im jeweiligen Modul. Danach prüfen Sie selbst im eigenen Gespräch. Ohne Ihre Zustimmung startet niemand.</p></details>
+        <details><summary>Sprechen die Berater Deutsch?</summary><p>Viele ja, alle sprechen sicher Englisch. Sie nennen uns die Projektsprache – und wir schlagen nur Profile vor, die sie im Kundengespräch beherrschen.</p></details>
+        <details><summary>Wie sieht es mit Vertrag, Datenschutz und Systemzugriff aus?</summary><p>Sie haben einen Vertragspartner und Ansprechpartner in Deutschland. Die Freelancer arbeiten aus der EU, damit gelten dieselben DSGVO-Regeln wie im Inland. Die Details klären wir gern im persönlichen Gespräch.</p></details>
+        <details><summary>Was passiert, wenn es nicht passt?</summary><p>Dann sagen Sie es uns. Wir kümmern uns um einen Ersatz und bleiben während des gesamten Einsatzes Ihr fester Ansprechpartner.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark" id="kontakt">
+    <div class="swrap contact">
+      <div class="copy">
+        <p class="eyebrow">Kontakt</p>
+        <h2>Welches Projekt würden Sie annehmen, wenn das Team stünde?</h2>
+        <p>Erzählen Sie uns davon. Unverbindlich, vertraulich und ohne Kosten, solange wir niemanden für Sie gefunden haben.</p>
+      </div>
+      <div class="mailbox">
+        <span class="lbl">Schreiben Sie uns</span>
+        <div class="mail"><code>sap@romteca.eu</code><button class="sbtn small" type="button" data-copy>E-Mail kopieren</button></div>
+        <p class="note">Nennen Sie uns Modul, Start, Dauer und Projektsprache. Wir antworten innerhalb eines Werktags.</p>
+      </div>
+    </div>
+  </section>
