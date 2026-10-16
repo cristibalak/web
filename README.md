@@ -29,7 +29,7 @@ layout: default
 title: Romteca for Automotive
 description: One line for search results
 logo_tag: Automotive          # optional label next to the logo
-cta_text: Talk to an engineer # optional header button text
+cta_text: Talk to us # optional header button text
 cta_href: /#contact           # optional header button link
 ---
 <section class="hero">…page content…</section>
