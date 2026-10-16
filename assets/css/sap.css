@@ -153,7 +153,7 @@ a:hover { color: var(--teal); }
 .map { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
 .map > .copy { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 .map .copy p:not(.eyebrow) { font-size: 18px; line-height: 1.6; color: var(--text); max-width: 52ch; }
-.map h2 em { font-style: normal; color: var(--teal); }
+.map h2 em, .hero h1 em { font-style: normal; color: var(--teal); }
 .map .copy .sbtn { align-self: flex-start; margin-top: 6px; }
 .map-fig { flex: 1 1 420px; min-width: 0; margin: 0; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: clamp(10px, 2vw, 20px); }
 .map-fig img { display: block; width: 100%; height: auto; }
@@ -187,8 +187,8 @@ a:hover { color: var(--teal); }
 
 /* Founder */
 .about { display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start; }
-.about-who { flex: 0 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
-.portrait { width: 100%; max-width: 280px; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block; margin-bottom: 14px; background: var(--band); }
+.about-who { flex: 0 1 220px; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.portrait { width: 100%; max-width: 180px; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; display: block; margin-bottom: 14px; background: var(--band); }
 .who-name { font-size: 20px; font-weight: 700; }
 .who-role { font-family: var(--mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
 .about-copy { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
