@@ -406,3 +406,8 @@ nav a.link[aria-current="page"] { color: var(--fg); }
 #page-sap .steps .n { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--accent); font-weight: 700; display: block; }
 .mail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--bg); color: var(--fg); border-radius: 6px; padding: 16px 18px; }
 .mail code { font-family: var(--mono); font-size: 16px; flex: 1; min-width: 0; overflow-wrap: anywhere; user-select: all; }
+/* Hero Fig. 1: Romteca bars grow in on load */
+#hero-fig .grow { transform-box: fill-box; transform-origin: left center; animation: heroGrow .8s cubic-bezier(.2,.7,.2,1) both; }
+#hero-fig .g1 { animation-delay: .2s; } #hero-fig .g2 { animation-delay: .4s; } #hero-fig .g3 { animation-delay: .6s; } #hero-fig .g4 { animation-delay: .8s; } #hero-fig .g5 { animation-delay: 1s; }
+@keyframes heroGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { #hero-fig .grow { animation: none; } }
