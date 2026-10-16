@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@800&display=swap">
-<link rel="stylesheet" href="{{ '/assets/css/sap.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/sap.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body>
 <a class="skip" href="#main">Zum Inhalt springen</a>
@@ -52,6 +52,6 @@
     <span>SAP, S/4HANA, SuccessFactors und BTP sind Marken der SAP SE. Romteca ist nicht mit der SAP SE verbunden.</span>
   </div>
 </footer>
-<script src="{{ '/assets/js/sap.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/sap.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>
